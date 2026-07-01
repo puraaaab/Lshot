@@ -143,7 +143,7 @@ option(BUILD_STATIC_LIBS ON)
 if(WIN32 OR APPLE)
   FetchContent_Declare(
     qHotKey
-    GIT_REPOSITORY https://github.com/lshot-org/QHotkey
+    GIT_REPOSITORY https://github.com/flameshot-org/QHotkey
     GIT_TAG master
   )
   FetchContent_MakeAvailable(QHotKey)
