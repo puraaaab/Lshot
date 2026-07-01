@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/">
-        <file>img/app/org.flameshot.Flameshot.svg</file>
-        <file>img/app/flameshot.svg</file>
-        <file>img/app/org.flameshot.Flameshot.png</file>
-        <file>img/app/flameshot.png</file>
-        <file>img/app/flameshot.mask.png</file>
-        <file>img/app/flameshot.mask.svg</file>
-        <file>img/app/flameshot.monochrome.png</file>
-        <file>img/app/flameshot.monochrome.svg</file>
+        <file>img/app/in.letmegrab.Lshot.svg</file>
+        <file>img/app/lshot.svg</file>
+        <file>img/app/in.letmegrab.Lshot.png</file>
+        <file>img/app/lshot.png</file>
+        <file>img/app/lshot.mask.png</file>
+        <file>img/app/lshot.mask.svg</file>
+        <file>img/app/lshot.monochrome.png</file>
+        <file>img/app/lshot.monochrome.svg</file>
         <file>img/app/keyboard.svg</file>
         <file>img/material/black/accept.svg</file>
         <file>img/material/black/arrow-bottom-left.svg</file>
