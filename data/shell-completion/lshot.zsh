@@ -1,22 +1,22 @@
-#compdef flameshot
+#compdef lshot
 # ------------------------------------------------------------------------------
 # Description
 # -----------
 #
-#  Completion script for the flameshot command line interface
-#  (https://github.com/flameshot-org/flameshot).
+#  Completion script for the lshot command line interface
+#  (https://github.com/lshot-org/lshot).
 #
 # ------------------------------------------------------------------------------
 # How to use
 # -------
 #
-# Copy this file to /usr/share/zsh/site-functions/_flameshot
+# Copy this file to /usr/share/zsh/site-functions/_lshot
 #
 
 
 # gui
 
-_flameshot_gui_opts=(
+_lshot_gui_opts=(
     {-p,--path}'[Existing directory or new file to save to]':dir:_files
     {-c,--clipboard}'[Save the capture to the clipboard]'
     {-d,--delay}'[Delay time in milliseconds]'
@@ -29,15 +29,15 @@ _flameshot_gui_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_flameshot_gui() {
+_lshot_gui() {
     _arguments -s : \
-    "$_flameshot_gui_opts[@]"
+    "$_lshot_gui_opts[@]"
 }
 
 
 # screen
 
-_flameshot_screen_opts=(
+_lshot_screen_opts=(
     {-n,--number}'[Define the screen to capture (starting from 0). Default: screen containing the cursor]'
     {-e,--edit}'[Interactively select and edit the screenshot region]'
     {-p,--path}'[Existing directory or new file to save to]':dir:_files
@@ -49,15 +49,15 @@ _flameshot_screen_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_flameshot_screen() {
+_lshot_screen() {
     _arguments -s : \
-    "$_flameshot_screen_opts[@]"
+    "$_lshot_screen_opts[@]"
 }
 
 
 # full
 
-_flameshot_full_opts=(
+_lshot_full_opts=(
     {-p,--path}'[Existing directory or new file to save to]':dir:_files
     {-c,--clipboard}'[Save the capture to the clipboard]'
     {-d,--delay}'[Delay time in milliseconds]'
@@ -65,15 +65,15 @@ _flameshot_full_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_flameshot_full() {
+_lshot_full() {
     _arguments -s : \
-    "$_flameshot_full_opts[@]"
+    "$_lshot_full_opts[@]"
 }
 
 
 # config
 
-_flameshot_config_opts=(
+_lshot_config_opts=(
     {-a,--autostart}'[Enable or disable run at startup (true/false)]'
     {-f,--filename}'[Set the filename pattern]'
     {-n,--notification}'[Enable or disable the notification (true/false)]'
@@ -85,14 +85,14 @@ _flameshot_config_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_flameshot_config() {
+_lshot_config() {
     _arguments -s : \
-    "$_flameshot_config_opts[@]"
+    "$_lshot_config_opts[@]"
 }
 
 
 # Main handle
-_flameshot() {
+_lshot() {
     local curcontext="$curcontext" ret=1
     local -a state line commands
 
@@ -101,7 +101,7 @@ _flameshot() {
         "screen:Capture a single screen (one monitor)"
         "full:Capture the entire desktop (all monitors)"
         "launcher:Open the capture launcher"
-        "config:Configure Flameshot"
+        "config:Configure Lshot"
     )
 
     _arguments -C -s -S -n \
@@ -119,16 +119,16 @@ _flameshot() {
         cmd=$words[1]
         case "$cmd" in
             (gui)
-                _flameshot_gui && ret=0
+                _lshot_gui && ret=0
             ;;
             (screen)
-                _flameshot_screen && ret=0
+                _lshot_screen && ret=0
             ;;
             (full)
-                _flameshot_full && ret=0
+                _lshot_full && ret=0
             ;;
             (config)
-                _flameshot_config && ret=0
+                _lshot_config && ret=0
             ;;
             (*)
                 _default && ret=0
@@ -142,7 +142,7 @@ _flameshot() {
     return ret
 }
 
-_flameshot
+_lshot
 
 #
 # Editor modelines  -  https://www.wireshark.org/tools/modelines.html

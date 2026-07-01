@@ -1,17 +1,18 @@
-target_sources(flameshot PRIVATE arrow/arrowtool.h arrow/arrowtool.cpp)
-target_sources(flameshot PRIVATE pixelate/pixelatetool.h pixelate/pixelatetool.cpp)
-target_sources(flameshot PRIVATE circle/circletool.h circle/circletool.cpp)
-target_sources(flameshot PRIVATE circlecount/circlecounttool.h circlecount/circlecounttool.cpp)
-target_sources(flameshot PRIVATE copy/copytool.h copy/copytool.cpp)
-target_sources(flameshot PRIVATE exit/exittool.h exit/exittool.cpp)
-target_sources(flameshot PRIVATE sizeincrease/sizeincreasetool.h sizeincrease/sizeincreasetool.cpp)
-target_sources(flameshot PRIVATE sizedecrease/sizedecreasetool.h sizedecrease/sizedecreasetool.cpp)
-
+target_sources(lshot PRIVATE arrow/arrowtool.h arrow/arrowtool.cpp)
+target_sources(lshot PRIVATE pixelate/pixelatetool.h pixelate/pixelatetool.cpp)
+target_sources(lshot PRIVATE circle/circletool.h circle/circletool.cpp)
+target_sources(lshot PRIVATE circlecount/circlecounttool.h circlecount/circlecounttool.cpp)
+target_sources(lshot PRIVATE copy/copytool.h copy/copytool.cpp)
+target_sources(lshot PRIVATE exit/exittool.h exit/exittool.cpp)
+target_sources(lshot PRIVATE sizeincrease/sizeincreasetool.h sizeincrease/sizeincreasetool.cpp)
+target_sources(lshot PRIVATE sizedecrease/sizedecreasetool.h sizedecrease/sizedecreasetool.cpp)
 if (ENABLE_IMGUR)
 target_sources(
-  flameshot
+  lshot
         PRIVATE imgupload/storages/imgur/imguruploader.h
         imgupload/storages/imgur/imguruploader.cpp
+        imgupload/storages/localassets/localassetsuploader.h
+        imgupload/storages/localassets/localassetsuploader.cpp
         imgupload/storages/imguploaderbase.h
         imgupload/storages/imguploaderbase.cpp
         imgupload/imguploadertool.h
@@ -21,7 +22,7 @@ target_sources(
 )
 endif()
 target_sources(
-  flameshot
+  lshot
   PRIVATE launcher/applaunchertool.h
           launcher/applauncherwidget.h
           launcher/launcheritemdelegate.h
@@ -31,34 +32,33 @@ target_sources(
           launcher/launcheritemdelegate.cpp
           launcher/openwithprogram.cpp
           launcher/terminallauncher.cpp)
-target_sources(flameshot PRIVATE line/linetool.h line/linetool.cpp)
-target_sources(flameshot PRIVATE marker/markertool.h marker/markertool.cpp)
-target_sources(flameshot PRIVATE move/movetool.h move/movetool.cpp)
-target_sources(flameshot PRIVATE pencil/penciltool.h pencil/penciltool.cpp)
+target_sources(lshot PRIVATE line/linetool.h line/linetool.cpp)
+target_sources(lshot PRIVATE marker/markertool.h marker/markertool.cpp)
+target_sources(lshot PRIVATE move/movetool.h move/movetool.cpp)
+target_sources(lshot PRIVATE pencil/penciltool.h pencil/penciltool.cpp)
 target_sources(
-  flameshot
+  lshot
   PRIVATE pin/pintool.h
           pin/pinwidget.h
           pin/pintool.cpp
           pin/pinwidget.cpp)
-target_sources(flameshot PRIVATE rectangle/rectangletool.h rectangle/rectangletool.cpp)
-target_sources(flameshot PRIVATE redo/redotool.h redo/redotool.cpp)
-target_sources(flameshot PRIVATE save/savetool.h save/savetool.cpp)
-target_sources(flameshot PRIVATE accept/accepttool.h accept/accepttool.cpp)
-target_sources(flameshot PRIVATE invert/inverttool.h invert/inverttool.cpp)
-target_sources(flameshot PRIVATE selection/selectiontool.h selection/selectiontool.cpp)
+target_sources(lshot PRIVATE rectangle/rectangletool.h rectangle/rectangletool.cpp)
+target_sources(lshot PRIVATE redo/redotool.h redo/redotool.cpp)
+target_sources(lshot PRIVATE save/savetool.h save/savetool.cpp)
+target_sources(lshot PRIVATE accept/accepttool.h accept/accepttool.cpp)
+target_sources(lshot PRIVATE invert/inverttool.h invert/inverttool.cpp)
+target_sources(lshot PRIVATE selection/selectiontool.h selection/selectiontool.cpp)
 target_sources(
-  flameshot
+  lshot
   PRIVATE text/textconfig.h
           text/texttool.h
           text/textwidget.h
           text/textconfig.cpp
           text/texttool.cpp
           text/textwidget.cpp)
-target_sources(flameshot PRIVATE undo/undotool.h undo/undotool.cpp)
-
+target_sources(lshot PRIVATE undo/undotool.h undo/undotool.cpp)
 target_sources(
-  flameshot
+  lshot
   PRIVATE abstractactiontool.cpp
           abstractpathtool.cpp
           abstracttwopointtool.cpp

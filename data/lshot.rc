@@ -1,6 +1,6 @@
 #pragma code_page(65001) // UTF-8
 
-IDI_ICON1 ICON "img\\app\\flameshot.ico"
+IDI_ICON1 ICON "img\\app\\lshot.ico"
 
 #include <windows.h>
 
@@ -29,13 +29,13 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName",      "The flameshot Org."
-            VALUE "FileDescription",  "Flameshot"
+            VALUE "CompanyName",      "The lshot Org."
+            VALUE "FileDescription",  "Lshot"
             VALUE "FileVersion",      VER_FILEVERSION_STR
-            VALUE "InternalName",     "flameshot"
-            VALUE "LegalCopyright",   "Copyright (C) 2017-2020 flameshot.org"
-            VALUE "OriginalFilename", "flameshot.exe"
-            VALUE "ProductName",      "Flameshot"
+            VALUE "InternalName",     "lshot"
+            VALUE "LegalCopyright",   "Copyright (C) 2017-2020 lshot.org"
+            VALUE "OriginalFilename", "lshot.exe"
+            VALUE "ProductName",      "Lshot"
             VALUE "ProductVersion",   VER_PRODUCTVERSION_STR
         END
     END

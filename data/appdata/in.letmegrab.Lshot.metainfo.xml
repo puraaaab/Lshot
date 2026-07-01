@@ -4,18 +4,18 @@ SPDX-FileCopyrightText: none
 SPDX-License-Identifier: CC0-1.0
 -->
 <component type="desktop-application">
-  <id>org.flameshot.Flameshot</id>
+  <id>in.letmegrab.Lshot</id>
   
   <metadata_license>CC0-1.0</metadata_license>
 
   <project_license>GPL-3.0-or-later</project_license>
 
-  <name>Flameshot</name>
+  <name>Lshot</name>
   
-  <translation type="qt">flameshot</translation>
+  <translation type="qt">lshot</translation>
 
-  <developer id="org.flameshot">
-    <name>Flameshot Developers</name>
+  <developer id="org.lshot">
+    <name>Lshot Developers</name>
   </developer>
 
   <supports>
@@ -48,36 +48,36 @@ SPDX-License-Identifier: CC0-1.0
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/flameshot-org/flameshot/master/docs/images/large_demo.png</image>
-      <caption>Flameshot Usage</caption>
+      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/large_demo.png</image>
+      <caption>Lshot Usage</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flameshot-org/flameshot/master/docs/images/small_demo.png</image>
+      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/small_demo.png</image>
       <caption>Demo of Pixelation, Arrow, Box, And Counter Bubble</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flameshot-org/flameshot/master/docs/images/launcher.png</image>
+      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/launcher.png</image>
       <caption>The Launcher Window</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flameshot-org/flameshot/master/docs/images/config_interface.png</image>
+      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/config_interface.png</image>
       <caption>Configuration Window - Interface tab</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/flameshot-org/flameshot/master/docs/images/config_shortcuts.png</image>
+      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/config_shortcuts.png</image>
       <caption>Configuration Window - Shortcuts tab</caption>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">https://github.com/flameshot-org/flameshot</url>
-  <url type="bugtracker">https://github.com/flameshot-org/flameshot/issues</url>
-  <url type="translate">https://hosted.weblate.org/projects/flameshot/</url>
-  <url type="contribute">https://github.com/flameshot-org/flameshot/blob/master/docs/CONTRIBUTING.md</url>
-  <url type="vcs-browser">https://github.com/flameshot-org/flameshot/</url>
+  <url type="homepage">https://github.com/lshot-org/lshot</url>
+  <url type="bugtracker">https://github.com/lshot-org/lshot/issues</url>
+  <url type="translate">https://hosted.weblate.org/projects/lshot/</url>
+  <url type="contribute">https://github.com/lshot-org/lshot/blob/master/docs/CONTRIBUTING.md</url>
+  <url type="vcs-browser">https://github.com/lshot-org/lshot/</url>
 
-  <update_contact>https://github.com/flameshot-org/flameshot/issues/new</update_contact>
+  <update_contact>https://github.com/lshot-org/lshot/issues/new</update_contact>
 
-  <launchable type="desktop-id">org.flameshot.Flameshot.desktop</launchable>
+  <launchable type="desktop-id">in.letmegrab.Lshot.desktop</launchable>
 
   <branding>
     <color type="primary" scheme_preference="light">#d6a8e3</color>

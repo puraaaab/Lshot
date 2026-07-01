@@ -1,6 +1,6 @@
 #include "uploadlineitem.h"
 #include "./ui_uploadlineitem.h"
-#include "core/flameshotdaemon.h"
+#include "core/lshotdaemon.h"
 #include "tools/imgupload/imguploadermanager.h"
 #include "utils/confighandler.h"
 #include "utils/history.h"
@@ -35,7 +35,7 @@ UploadLineItem::UploadLineItem(QWidget* parent,
     ui->uploadTimestamp->setText(timestamp);
 
     connect(ui->copyUrl, &QPushButton::clicked, this, [=, this]() {
-        FlameshotDaemon::copyToClipboard(url);
+        LshotDaemon::copyToClipboard(url);
     });
 
     connect(ui->openBrowser, &QPushButton::clicked, this, [=, this]() {

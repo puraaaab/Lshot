@@ -1,33 +1,33 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 
-#include "flameshotdbusadapter.h"
-#include "core/flameshot.h"
-#include "core/flameshotdaemon.h"
+#include "lshotdbusadapter.h"
+#include "core/lshot.h"
+#include "core/lshotdaemon.h"
 
-FlameshotDBusAdapter::FlameshotDBusAdapter(QObject* parent)
+LshotDBusAdapter::LshotDBusAdapter(QObject* parent)
   : QDBusAbstractAdaptor(parent)
 {}
 
-FlameshotDBusAdapter::~FlameshotDBusAdapter() = default;
+LshotDBusAdapter::~LshotDBusAdapter() = default;
 
-void FlameshotDBusAdapter::captureScreen()
+void LshotDBusAdapter::captureScreen()
 {
-    Flameshot::instance()->gui(CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
+    Lshot::instance()->gui(CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
 }
 
-void FlameshotDBusAdapter::attachScreenshotToClipboard(const QByteArray& data)
+void LshotDBusAdapter::attachScreenshotToClipboard(const QByteArray& data)
 {
-    FlameshotDaemon::instance()->attachScreenshotToClipboard(data);
+    LshotDaemon::instance()->attachScreenshotToClipboard(data);
 }
 
-void FlameshotDBusAdapter::attachTextToClipboard(const QString& text,
+void LshotDBusAdapter::attachTextToClipboard(const QString& text,
                                                  const QString& notification)
 {
-    FlameshotDaemon::instance()->attachTextToClipboard(text, notification);
+    LshotDaemon::instance()->attachTextToClipboard(text, notification);
 }
 
-void FlameshotDBusAdapter::attachPin(const QByteArray& data)
+void LshotDBusAdapter::attachPin(const QByteArray& data)
 {
-    FlameshotDaemon::instance()->attachPin(data);
+    LshotDaemon::instance()->attachPin(data);
 }

@@ -16,50 +16,50 @@
 .\" .sp <n>    insert n+1 empty lines
 .\" for manpage-specific macros, see man(7)
 .SH NAME
-Flameshot \- Powerful yet simple-to-use screenshot software
+Lshot \- Powerful yet simple-to-use screenshot software
 .SH SYNOPSIS
-.B flameshot
+.B lshot
 [subcommands] [arguments]
 .br
-.B flameshot gui
+.B lshot gui
 [gui arguments]
 .br
-.B flameshot screen
+.B lshot screen
 [screen arguments]
 .br
-.B flameshot full
+.B lshot full
 [fullscreen arguments]
 .br
-.B flameshot config
+.B lshot config
 [config arguments]
 .br
-.B flameshot launcher
+.B lshot launcher
 .br
 .
 .\"----------------------------------------------------------------------------
 .SH DESCRIPTION
 This manual page documents briefly the
-.B flameshot
+.B lshot
 command as provided by
-.B flameshot
+.B lshot
 package.
 .PP
-\fBflameshot\fP is a screenshot tool that aims to be powerful yet simple-to-use.
+\fBlshot\fP is a screenshot tool that aims to be powerful yet simple-to-use.
 Its notable features include customizable appearance, in-app screenshot editing,
 D-Bus interface, tray icon support, experimental GNOME/KDE Wayland support,
 integration with Imgur and support for both GUI and CLI interface.
 .PP
-Besides the usage information about \fBflameshot\fR in this manpage, you can find similar information using \fBflameshot --help\fR. Same \fB--help\fR can be used for each subcommand as well to get the valid arguments for them. The detailed usage of \fBflameshot\fP is documented in the \fIREADME.md\fR file on the project's Git repository page:
-https://github.com/flameshot-org/flameshot
+Besides the usage information about \fBlshot\fR in this manpage, you can find similar information using \fBlshot --help\fR. Same \fB--help\fR can be used for each subcommand as well to get the valid arguments for them. The detailed usage of \fBlshot\fP is documented in the \fIREADME.md\fR file on the project's Git repository page:
+https://github.com/lshot-org/lshot
 .
 .\"----------------------------------------------------------------------------
 .SH "SUBCOMMANDS"
 .PP
-Per default without subcommands, \fBflameshot\fR runs the Flameshot in the background and adds a tray icon for configuration. Note that it will not take a screenshot unless you define one of the modes though the subcommands. There are various subcommands that can be used to use flameshot in different modes:
+Per default without subcommands, \fBlshot\fR runs the Lshot in the background and adds a tray icon for configuration. Note that it will not take a screenshot unless you define one of the modes though the subcommands. There are various subcommands that can be used to use lshot in different modes:
 .
 .TP
 .B gui
-Running Flameshot in \fBgui\fR mode would let the user to select the region from which the screenshot should be taken and then allow them to annotate the screenshot.
+Running Lshot in \fBgui\fR mode would let the user to select the region from which the screenshot should be taken and then allow them to annotate the screenshot.
 .
 .TP
 .B full
@@ -80,7 +80,7 @@ If no argument is provided, it will open the config window, otherwise it can cha
 .\"----------------------------------------------------------------------------
 .SH "ARGUMENTS"
 .PP
-Here we list all the arguments available for all subcommands. The subcommands that accept each argument are listed after each argument. Alternatively, you can use the \fBflameshot [subcommand] --help\fR to know the list of available arguments for each subcommand.
+Here we list all the arguments available for all subcommands. The subcommands that accept each argument are listed after each argument. Alternatively, you can use the \fBlshot [subcommand] --help\fR to know the list of available arguments for each subcommand.
 .
 .PP
 \-s, \-\-accept-on-select
@@ -125,7 +125,7 @@ Valid for subcommands: config
 .PP
 \-d, \-\-delay <milliseconds>
 .RS 4
-How many milliseconds should Flameshot wait before taking the screenshot
+How many milliseconds should Lshot wait before taking the screenshot
 .br
 Valid for subcommands: full, gui, screen
 .RE
@@ -245,51 +245,51 @@ Valid for subcommands: config
 .\"----------------------------------------------------------------------------
 .SH "EXAMPLE USAGE"
 .PP
-This section lists some of the most common usage of \fBflameshot\fR via
+This section lists some of the most common usage of \fBlshot\fR via
 command line.
 .
 .TP
-.B flameshot
-Start flameshot and have it running in background. If enabled,
+.B lshot
+Start lshot and have it running in background. If enabled,
 an icon will appear in the tray area of current desktop environment.
 .
 .TP
-.B flameshot gui
+.B lshot gui
 Capture with GUI.
 .
 .TP
-\fBflameshot gui\fR \-p /path/to/captures
+\fBlshot gui\fR \-p /path/to/captures
 Capture with GUI and custom save path.
 .
 .TP
-\fBflameshot gui\fR \-d 2000
+\fBlshot gui\fR \-d 2000
 Open GUI with a delay of 2 seconds.
 .
 .TP
-.B flameshot launcher
+.B lshot launcher
 Open a launcher dialog for advanced screenshot, such as custom
 time delay, etc.
 .
 .TP
-.B flameshot full \-\-help
-Shows help for \fBflameshot full\fR subcommand.
+.B lshot full \-\-help
+Shows help for \fBlshot full\fR subcommand.
 .
 .TP
-\fBflameshot full\fR -p /path/to/captures -d 5000
+\fBlshot full\fR -p /path/to/captures -d 5000
 Fullscreen capture with custom save path (no GUI) and time delay.
 .
 .TP
-\fBflameshot full\fR -c -p /path/to/captures
+\fBlshot full\fR -c -p /path/to/captures
 Fullscreen capture with custom savepath copying to clipboard.
 .
 .TP
-\fBflameshot screen\fR \-\-number <screen number>
+\fBlshot screen\fR \-\-number <screen number>
 Define the screen to capture. Will capture the screen containing the
 cursor by default.
 .
 .TP
-\fBflameshot screen\fR \-\-help
-Shows help for \fBflameshot screen\fR subcommand.
+\fBlshot screen\fR \-\-help
+Shows help for \fBlshot screen\fR subcommand.
 .
 .\"----------------------------------------------------------------------------
 .SH RETURN VALUE
@@ -303,15 +303,15 @@ You may also find more detailed online documentation on upstream project homepag
 .HP
 Upstream project homepage:
 .br
-• \m[blue]\fBhttps://flameshot.org\fR\m[]
+• \m[blue]\fBhttps://lshot.org\fR\m[]
 .br
-• \m[blue]\fBhttps://github.com/flameshot-org/flameshot\fR\m[]
+• \m[blue]\fBhttps://github.com/lshot-org/lshot\fR\m[]
 .
 .\"----------------------------------------------------------------------------
 .SH "AUTHOR"
 .PP
 .ad l
-.B Flameshot
+.B Lshot
 was initially written by
 .MT izhe@\:hotmail.es
 lupoDharkael
@@ -330,7 +330,7 @@ Martin Eckleben
 .br
 The following URL gives you a more complete list of contributors:
 .RS
-\m[blue]\fBhttps://github.com/flameshot-org/flameshot/graphs/contributors\fR\m[]\&.
+\m[blue]\fBhttps://github.com/lshot-org/lshot/graphs/contributors\fR\m[]\&.
 .RE
 .
 .\"----------------------------------------------------------------------------
@@ -339,7 +339,7 @@ The following URL gives you a more complete list of contributors:
 .PP
 • The main code is licensed under GPLv3+
 .br
-• The logo of Flameshot is licensed under Free Art License v1.3
+• The logo of Lshot is licensed under Free Art License v1.3
 .br
 • The button icons are licensed under Apache License 2.0. See: \m[blue]\fBhttps://github.com/google/material-design-icons\fR\m[]
 .br

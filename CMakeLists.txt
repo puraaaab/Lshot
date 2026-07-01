@@ -3,20 +3,20 @@ cmake_minimum_required(VERSION 3.22)
 
 set(FLAMESHOT_VERSION 14.0.0)
 
-# Flameshot-org
-set(GIT_API_URL "https://api.github.com/repos/flameshot-org/flameshot/releases/latest")
+# Lshot-org
+set(GIT_API_URL "https://api.github.com/repos/lshot-org/lshot/releases/latest")
 
 project(
-  flameshot
+  lshot
   VERSION ${FLAMESHOT_VERSION}
   LANGUAGES CXX)
-set(PROJECT_NAME_CAPITALIZED "Flameshot")
+set(PROJECT_NAME_CAPITALIZED "Lshot")
 
 include(FetchContent)
 #Must be set before fetching external content!
 #QT_DEFAULT_MAJOR_VERSION used by QHotkey
 set(QT_DEFAULT_MAJOR_VERSION 6 CACHE STRING "")
-#QT_VERSION_MAJOR used by Flameshot and QtColorWidgets
+#QT_VERSION_MAJOR used by Lshot and QtColorWidgets
 set(QT_VERSION_MAJOR 6 CACHE STRING "")
 #BUILD_SHARED_LIBS used by QHotkey and QtColorWidgets
 option(BUILD_SHARED_LIBS OFF)
@@ -143,7 +143,7 @@ option(BUILD_STATIC_LIBS ON)
 if(WIN32 OR APPLE)
   FetchContent_Declare(
     qHotKey
-    GIT_REPOSITORY https://github.com/flameshot-org/QHotkey
+    GIT_REPOSITORY https://github.com/lshot-org/QHotkey
     GIT_TAG master
   )
   FetchContent_MakeAvailable(QHotKey)
@@ -152,12 +152,12 @@ endif()
 add_subdirectory(src)
 
 # CPack
-set(CPACK_PACKAGE_VENDOR "flameshot-org")
+set(CPACK_PACKAGE_VENDOR "lshot-org")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Powerful yet simple to use screenshot software.")
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
-set(CPACK_PACKAGE_HOMEPAGE_URL "https://flameshot.org")
-set(CPACK_PACKAGE_CONTACT "flameshot-org developers <info@flameshot.org>")
-set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/data/img/app/org.flameshot.Flameshot.svg") # TODO: Can any generator make
+set(CPACK_PACKAGE_HOMEPAGE_URL "https://lshot.org")
+set(CPACK_PACKAGE_CONTACT "lshot-org developers <info@lshot.org>")
+set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/data/img/app/in.letmegrab.Lshot.svg") # TODO: Can any generator make
 # use of this?
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md") # TODO: Where is this used? Do we need a better
 # source?
@@ -179,7 +179,7 @@ if(WIN32)
 
     # WIX (Windows .msi installer)
     # 48x48 pixels
-    set(CPACK_WIX_PRODUCT_ICON "${CMAKE_SOURCE_DIR}/data/img/app/flameshot.ico")
+    set(CPACK_WIX_PRODUCT_ICON "${CMAKE_SOURCE_DIR}/data/img/app/lshot.ico")
     # Supported languages can be found at http://wixtoolset.org/documentation/manual/v3/wixui/wixui_localization.html
     # set(CPACK_WIX_CULTURES "ar-SA,bg-BG,ca-ES,hr-HR,cs-CZ,da-DK,nl-NL,en-US,et-EE,fi-FI,fr-FR,de-DE")
     set(CPACK_WIX_UI_BANNER "${CMAKE_SOURCE_DIR}/packaging/win-installer/Bitmaps/CPACK_WIX_UI_BANNER.BMP")

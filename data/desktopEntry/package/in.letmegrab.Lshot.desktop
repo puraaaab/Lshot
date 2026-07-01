@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Flameshot
+Name=Lshot
 Name[zh_CN]=火焰截图
 GenericName=Screenshot tool
 GenericName[zh_CN]=屏幕截图工具
@@ -28,25 +28,25 @@ Comment[uk]=Потужний простий у використанні дода
 Comment[es]=Software de captura de pantalla potente y fácil de usar.
 Comment[de]=Schlichte, leistungsstarke Screenshot-Software
 Comment[pt_BR]=Software de captura de tela poderoso, mas simples de usar.
-Keywords=flameshot;screenshot;capture;shutter;
-Keywords[zh_CN]=flameshot;screenshot;capture;shutter;截图;屏幕;
-Keywords[fr]=flameshot;capture d'écran;capter;shutter;
-Keywords[ja]=flameshot;screenshot;capture;shutter;スクリーンショット;キャプチャー;
-Keywords[nl]=flameshot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
-Keywords[nl_NL]=flameshot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
-Keywords[es]=flameshot;screenshot;capture;shutter;captura;
-Keywords[de]=flameshot;screenshot;Bildschirmfoto;Aufnahme;
-Keywords[pt_BR]=flameshot;screenshot;captura de tela;captura;shutter;
+Keywords=lshot;screenshot;capture;shutter;
+Keywords[zh_CN]=lshot;screenshot;capture;shutter;截图;屏幕;
+Keywords[fr]=lshot;capture d'écran;capter;shutter;
+Keywords[ja]=lshot;screenshot;capture;shutter;スクリーンショット;キャプチャー;
+Keywords[nl]=lshot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
+Keywords[nl_NL]=lshot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
+Keywords[es]=lshot;screenshot;capture;shutter;captura;
+Keywords[de]=lshot;screenshot;Bildschirmfoto;Aufnahme;
+Keywords[pt_BR]=lshot;screenshot;captura de tela;captura;shutter;
 Exec=@LAUNCHER_EXECUTABLE@
-Icon=org.flameshot.Flameshot
+Icon=in.letmegrab.Lshot
 Terminal=false
 Type=Application
 Categories=Graphics;
 StartupNotify=false
-StartupWMClass=flameshot
+StartupWMClass=lshot
 Actions=Configure;Capture;Launcher;
 X-DBUS-StartupType=Unique
-X-DBUS-ServiceName=org.flameshot.Flameshot
+X-DBUS-ServiceName=in.letmegrab.Lshot
 X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot,org.kde.KWin.ScreenShot2
 
 [Desktop Action Configure]
@@ -64,7 +64,7 @@ Name[uk]=Налаштувати
 Name[es]=Configurar
 Name[de]=Einstellungen
 Name[pt_BR]=Configurar
-Exec=flameshot config
+Exec=lshot config
 
 [Desktop Action Capture]
 Name=Take screenshot
@@ -81,7 +81,7 @@ Name[nl_NL]=Schermfoto maken
 Name[es]=Tomar captura de pantalla
 Name[de]=Bildschirmfoto aufnehmen
 Name[pt_BR]=Capturar tela
-Exec=flameshot gui
+Exec=lshot gui
 
 [Desktop Action Launcher]
 Name=Open launcher
@@ -91,4 +91,4 @@ Name[nl_NL]=Starter openen
 Name[sk]=Otvoriť spúšťač
 Name[zh_CN]=打开启动器
 Name[pt_BR]=Abrir lançador
-Exec=flameshot launcher
+Exec=lshot launcher

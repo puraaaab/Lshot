@@ -20,12 +20,12 @@ class QNetworkReply;
 class QVersionNumber;
 #endif
 
-class FlameshotDaemon : public QObject
+class LshotDaemon : public QObject
 {
     Q_OBJECT
 public:
     static void start();
-    static FlameshotDaemon* instance();
+    static LshotDaemon* instance();
     static void createPin(const QPixmap& capture, QRect geometry);
     static void copyToClipboard(const QPixmap& capture);
     static void copyToClipboard(const QString& text,
@@ -34,7 +34,7 @@ public:
 
     void sendTrayNotification(
       const QString& text,
-      const QString& title = QStringLiteral("Flameshot Info"),
+      const QString& title = QStringLiteral("Lshot Info"),
       const int timeout = 5000);
 
 #if defined(USE_KDSINGLEAPPLICATION) &&                                        \
@@ -59,7 +59,7 @@ signals:
 #endif
 
 private:
-    FlameshotDaemon();
+    LshotDaemon();
     void quitIfIdle();
     void attachPin(const QPixmap& pixmap, QRect geometry);
     void attachScreenshotToClipboard(const QPixmap& pixmap);
@@ -91,9 +91,9 @@ private:
     QNetworkAccessManager* m_networkCheckUpdates;
 #endif
 
-    static FlameshotDaemon* m_instance;
+    static LshotDaemon* m_instance;
 
 #if !(defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-    friend class FlameshotDBusAdapter;
+    friend class LshotDBusAdapter;
 #endif
 };
