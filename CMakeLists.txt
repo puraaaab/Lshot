@@ -4,7 +4,7 @@ cmake_minimum_required(VERSION 3.22)
 set(FLAMESHOT_VERSION 14.0.0)
 
 # Lshot-org
-set(GIT_API_URL "https://api.github.com/repos/lshot-org/lshot/releases/latest")
+set(GIT_API_URL "https://api.github.com/repos/puraaaab/Lshot/releases/latest")
 
 project(
   lshot
