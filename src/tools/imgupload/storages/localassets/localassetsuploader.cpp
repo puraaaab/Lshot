@@ -23,7 +23,7 @@
 // ---------------------------------------------------------------------
 // CONFIGURE THIS: your self-hosted upload endpoint
 // ---------------------------------------------------------------------
-static const char* UPLOAD_ENDPOINT = "https://localassets.letmegrab.in/upload";
+static const char* UPLOAD_ENDPOINT = "https://localassets.letmegrab.in/ss";
 
 LocalAssetsUploader::LocalAssetsUploader(const QPixmap& capture,
                                           QWidget* parent)
