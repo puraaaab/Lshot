@@ -80,8 +80,8 @@ SPDX-License-Identifier: CC0-1.0
   <launchable type="desktop-id">in.letmegrab.CapShot.desktop</launchable>
 
   <branding>
-    <color type="primary" scheme_preference="light">#d6a8e3</color>
-    <color type="primary" scheme_preference="dark">#5c0075</color>
+    <color type="primary" scheme_preference="light">#CB2957</color>
+    <color type="primary" scheme_preference="dark">#DDDDDD</color>
   </branding>
 
   <categories>
