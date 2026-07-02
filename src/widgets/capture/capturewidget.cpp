@@ -12,7 +12,7 @@
 #include "capturewidget.h"
 #include "config/cacheutils.h"
 #include "config/generalconf.h"
-#include "core/lshot.h"
+#include "core/CapShot.h"
 #include "core/qguiappcurrentscreen.h"
 #include "tools/copy/copytool.h"
 #include "utils/abstractlogger.h"
@@ -322,10 +322,10 @@ CaptureWidget::~CaptureWidget()
         setLastRegion(lastRegion);
         QRect geometry(m_context.selection);
         geometry.setTopLeft(geometry.topLeft() + m_context.widgetOffset);
-        Lshot::instance()->exportCapture(
+        CapShot::instance()->exportCapture(
           pixmap(), geometry, m_context.request);
     } else {
-        emit Lshot::instance()->captureFailed();
+        emit CapShot::instance()->captureFailed();
     }
 }
 
@@ -778,13 +778,13 @@ void CaptureWidget::paintEvent(QPaintEvent* paintEvent)
 
     if (!isActiveWindow()) {
         drawErrorMessage(
-          tr("Lshot has lost focus. Keyboard shortcuts won't "
+          tr("CapShot has lost focus. Keyboard shortcuts won't "
              "work until you click somewhere."),
           &painter);
     } else if (m_configError) {
         drawErrorMessage(ConfigHandler().errorMessage(), &painter);
     } else if (m_configErrorResolved) {
-        drawErrorMessage(tr("Configuration error resolved. Launch `lshot "
+        drawErrorMessage(tr("Configuration error resolved. Launch `CapShot "
                             "gui` again to apply it."),
                          &painter);
     }
@@ -1484,7 +1484,7 @@ void CaptureWidget::handleToolSignal(CaptureTool::Request r)
                 w->setAttribute(Qt::WA_DeleteOnClose);
                 w->activateWindow();
                 w->show();
-                Lshot::instance()->setExternalWidget(true);
+                CapShot::instance()->setExternalWidget(true);
             }
             break;
         case CaptureTool::REQ_INCREASE_TOOL_SIZE:

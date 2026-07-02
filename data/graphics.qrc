@@ -1,13 +1,13 @@
 <RCC>
     <qresource prefix="/">
-        <file>img/app/in.letmegrab.Lshot.svg</file>
-        <file>img/app/lshot.svg</file>
-        <file>img/app/in.letmegrab.Lshot.png</file>
-        <file>img/app/lshot.png</file>
-        <file>img/app/lshot.mask.png</file>
-        <file>img/app/lshot.mask.svg</file>
-        <file>img/app/lshot.monochrome.png</file>
-        <file>img/app/lshot.monochrome.svg</file>
+        <file>img/app/in.letmegrab.CapShot.svg</file>
+        <file>img/app/CapShot.svg</file>
+        <file>img/app/in.letmegrab.CapShot.png</file>
+        <file>img/app/CapShot.png</file>
+        <file>img/app/CapShot.mask.png</file>
+        <file>img/app/CapShot.mask.svg</file>
+        <file>img/app/CapShot.monochrome.png</file>
+        <file>img/app/CapShot.monochrome.svg</file>
         <file>img/app/keyboard.svg</file>
         <file>img/material/black/accept.svg</file>
         <file>img/material/black/arrow-bottom-left.svg</file>

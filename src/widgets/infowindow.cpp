@@ -3,7 +3,7 @@
 
 #include "infowindow.h"
 #include "./ui_infowindow.h"
-#include "core/lshotdaemon.h"
+#include "core/CapShotdaemon.h"
 #include "core/qguiappcurrentscreen.h"
 #include "utils/globalvalues.h"
 
@@ -55,6 +55,6 @@ QString generateKernelString()
 
 void InfoWindow::copyInfo()
 {
-    LshotDaemon::copyToClipboard(GlobalValues::versionInfo() + "\n" +
+    CapShotDaemon::copyToClipboard(GlobalValues::versionInfo() + "\n" +
                                      generateKernelString());
 }

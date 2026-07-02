@@ -104,7 +104,7 @@ AbstractLogger& AbstractLogger::attachNotificationPath(const QString& path)
 }
 
 /**
- * @brief Enable/disable message header (e.g. "lshot: info:").
+ * @brief Enable/disable message header (e.g. "CapShot: info:").
  */
 AbstractLogger& AbstractLogger::enableMessageHeader(bool enable)
 {
@@ -131,8 +131,8 @@ QString AbstractLogger::messageHeader(Channel channel, Target target)
 
     if (target == Notification) {
         messageChannel[0] = messageChannel[0].toUpper();
-        return "Lshot " + messageChannel;
+        return "CapShot " + messageChannel;
     } else {
-        return "lshot: " + messageChannel + ": ";
+        return "CapShot: " + messageChannel + ": ";
     }
 }

@@ -1,33 +1,33 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 
-#include "lshotdbusadapter.h"
-#include "core/lshot.h"
-#include "core/lshotdaemon.h"
+#include "CapShotdbusadapter.h"
+#include "core/CapShot.h"
+#include "core/CapShotdaemon.h"
 
-LshotDBusAdapter::LshotDBusAdapter(QObject* parent)
+CapShotDBusAdapter::CapShotDBusAdapter(QObject* parent)
   : QDBusAbstractAdaptor(parent)
 {}
 
-LshotDBusAdapter::~LshotDBusAdapter() = default;
+CapShotDBusAdapter::~CapShotDBusAdapter() = default;
 
-void LshotDBusAdapter::captureScreen()
+void CapShotDBusAdapter::captureScreen()
 {
-    Lshot::instance()->gui(CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
+    CapShot::instance()->gui(CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
 }
 
-void LshotDBusAdapter::attachScreenshotToClipboard(const QByteArray& data)
+void CapShotDBusAdapter::attachScreenshotToClipboard(const QByteArray& data)
 {
-    LshotDaemon::instance()->attachScreenshotToClipboard(data);
+    CapShotDaemon::instance()->attachScreenshotToClipboard(data);
 }
 
-void LshotDBusAdapter::attachTextToClipboard(const QString& text,
+void CapShotDBusAdapter::attachTextToClipboard(const QString& text,
                                                  const QString& notification)
 {
-    LshotDaemon::instance()->attachTextToClipboard(text, notification);
+    CapShotDaemon::instance()->attachTextToClipboard(text, notification);
 }
 
-void LshotDBusAdapter::attachPin(const QByteArray& data)
+void CapShotDBusAdapter::attachPin(const QByteArray& data)
 {
-    LshotDaemon::instance()->attachPin(data);
+    CapShotDaemon::instance()->attachPin(data);
 }

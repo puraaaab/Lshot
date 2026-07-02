@@ -139,7 +139,7 @@ void VisualsEditor::initTranslations()
                 QMessageBox::information(
                   this,
                   tr("Configuration"),
-                  tr("Lshot must be restarted to apply these changes!"));
+                  tr("CapShot must be restarted to apply these changes!"));
             });
 
     localLayout->addWidget(m_selectTranslation);

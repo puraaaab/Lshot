@@ -10,14 +10,14 @@
 #include <QDBusInterface>
 #include <QDBusMessage>
 #else
-#include "core/lshotdaemon.h"
+#include "core/CapShotdaemon.h"
 #endif
 
 // work-around for snap, which cannot install icons into
 // the system folder, so instead the absolute path to the
-// icon (saved somewhere in /snap/lshot/...) is passed
+// icon (saved somewhere in /snap/CapShot/...) is passed
 #ifndef FLAMESHOT_ICON
-#define FLAMESHOT_ICON "lshot"
+#define FLAMESHOT_ICON "CapShot"
 #endif
 
 SystemNotification::SystemNotification(QObject* parent)
@@ -48,7 +48,7 @@ SystemNotification::SystemNotification(QObject* parent)
 void SystemNotification::sendMessage(const QString& text,
                                      const QString& savePath)
 {
-    sendMessage(text, tr("Lshot Info"), savePath);
+    sendMessage(text, tr("CapShot Info"), savePath);
 }
 
 void SystemNotification::sendMessage(const QString& text,
@@ -65,9 +65,9 @@ void SystemNotification::sendMessage(const QString& text,
       this,
       [&]() {
           // The call is queued to avoid recursive static initialization of
-          // Lshot and ConfigHandler.
-          if (LshotDaemon::instance())
-              LshotDaemon::instance()->sendTrayNotification(
+          // CapShot and ConfigHandler.
+          if (CapShotDaemon::instance())
+              CapShotDaemon::instance()->sendTrayNotification(
                 text, title, timeout);
       },
       Qt::QueuedConnection);

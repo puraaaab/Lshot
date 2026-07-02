@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 
-#include "lshot.h"
-#include "core/lshotdaemon.h"
+#include "CapShot.h"
+#include "core/CapShotdaemon.h"
 #if defined(Q_OS_MACOS) || defined(Q_OS_WIN)
 #include "qhotkey.h"
 #endif
@@ -75,7 +75,7 @@ constexpr const char* visibleInDockProperty = "_visibleInDock";
 #include <QScreen>
 #endif
 
-Lshot::Lshot()
+CapShot::CapShot()
   : m_haveExternalWidget(false)
   , m_captureWindow(nullptr)
 #if (defined(Q_OS_MACOS) || defined(Q_OS_WIN))
@@ -113,13 +113,13 @@ Lshot::Lshot()
 #endif
 }
 
-Lshot* Lshot::instance()
+CapShot* CapShot::instance()
 {
-    static Lshot c;
+    static CapShot c;
     return &c;
 }
 
-CaptureWidget* Lshot::gui(const CaptureRequest& req)
+CaptureWidget* CapShot::gui(const CaptureRequest& req)
 {
     if (!resolveAnyConfigErrors()) {
         return nullptr;
@@ -128,7 +128,7 @@ CaptureWidget* Lshot::gui(const CaptureRequest& req)
 #if defined(Q_OS_MACOS)
     // This is required on MacOS because of Mission Control. If you'll switch to
     // another Desktop you cannot take a new screenshot from the tray, you have
-    // to switch back to the Lshot Desktop manually. It is not obvious and a
+    // to switch back to the CapShot Desktop manually. It is not obvious and a
     // large number of users are confused and report a bug.
     if (m_captureWindow != nullptr) {
         m_captureWindow->close();
@@ -180,7 +180,7 @@ CaptureWidget* Lshot::gui(const CaptureRequest& req)
     }
 }
 
-void Lshot::screen(CaptureRequest req, const int screenNumber)
+void CapShot::screen(CaptureRequest req, const int screenNumber)
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -234,7 +234,7 @@ void Lshot::screen(CaptureRequest req, const int screenNumber)
     }
 }
 
-void Lshot::full(const CaptureRequest& req)
+void CapShot::full(const CaptureRequest& req)
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -243,14 +243,14 @@ void Lshot::full(const CaptureRequest& req)
     bool ok = true;
     QPixmap p(ScreenGrabber().grabFullDesktop(ok));
     if (ok) {
-        QRect selection; // `lshot full` does not support region selection
+        QRect selection; // `CapShot full` does not support region selection
         exportCapture(p, selection, req);
     } else {
         emit captureFailed();
     }
 }
 
-void Lshot::launcher()
+void CapShot::launcher()
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -265,7 +265,7 @@ void Lshot::launcher()
 #endif
 }
 
-void Lshot::config()
+void CapShot::config()
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -286,7 +286,7 @@ void Lshot::config()
     }
 }
 
-void Lshot::info()
+void CapShot::info()
 {
     if (m_infoWindow == nullptr) {
         m_infoWindow = new InfoWindow();
@@ -297,7 +297,7 @@ void Lshot::info()
 }
 
 #ifdef ENABLE_IMGUR
-void Lshot::history()
+void CapShot::history()
 {
     static UploadHistory* historyWidget = nullptr;
     if (historyWidget == nullptr) {
@@ -323,7 +323,7 @@ void Lshot::history()
 #endif
 
 #if defined(Q_OS_MACOS)
-void Lshot::onWindowVisibilityChanged(QWindow::Visibility newVisibility)
+void CapShot::onWindowVisibilityChanged(QWindow::Visibility newVisibility)
 {
     auto* qw = qobject_cast<QWindow*>(sender());
     if (!qw) {
@@ -346,7 +346,7 @@ void Lshot::onWindowVisibilityChanged(QWindow::Visibility newVisibility)
     }
 }
 
-void Lshot::showDockIcon(QWidget* w)
+void CapShot::showDockIcon(QWidget* w)
 {
     QWindow* qw = w->windowHandle();
     if (!qw) {
@@ -356,11 +356,11 @@ void Lshot::showDockIcon(QWidget* w)
     connect(qw,
             &QWindow::visibilityChanged,
             this,
-            &Lshot::onWindowVisibilityChanged);
+            &CapShot::onWindowVisibilityChanged);
 }
 #endif
 
-void Lshot::openSavePath()
+void CapShot::openSavePath()
 {
     QString savePath = ConfigHandler().savePath();
     if (!savePath.isEmpty()) {
@@ -368,18 +368,18 @@ void Lshot::openSavePath()
     }
 }
 
-QVersionNumber Lshot::getVersion()
+QVersionNumber CapShot::getVersion()
 {
     return QVersionNumber::fromString(
       QStringLiteral(APP_VERSION).replace("v", ""));
 }
 
-void Lshot::setOrigin(Origin origin)
+void CapShot::setOrigin(Origin origin)
 {
     m_origin = origin;
 }
 
-Lshot::Origin Lshot::origin()
+CapShot::Origin CapShot::origin()
 {
     return m_origin;
 }
@@ -388,7 +388,7 @@ Lshot::Origin Lshot::origin()
  * @brief Prompt the user to resolve config errors if necessary.
  * @return Whether errors were resolved.
  */
-bool Lshot::resolveAnyConfigErrors()
+bool CapShot::resolveAnyConfigErrors()
 {
     bool resolved = true;
     ConfigHandler confighandler;
@@ -417,7 +417,7 @@ bool Lshot::resolveAnyConfigErrors()
     return resolved;
 }
 
-void Lshot::requestCapture(const CaptureRequest& request)
+void CapShot::requestCapture(const CaptureRequest& request)
 {
     if (!resolveAnyConfigErrors()) {
         return;
@@ -446,7 +446,7 @@ void Lshot::requestCapture(const CaptureRequest& request)
     }
 }
 
-void Lshot::exportCapture(const QPixmap& capture,
+void CapShot::exportCapture(const QPixmap& capture,
                               QRect& selection,
                               const CaptureRequest& req)
 {
@@ -479,11 +479,11 @@ void Lshot::exportCapture(const QPixmap& capture,
     }
 
     if (tasks & CR::COPY) {
-        LshotDaemon::copyToClipboard(capture);
+        CapShotDaemon::copyToClipboard(capture);
     }
 
     if (tasks & CR::PIN) {
-        LshotDaemon::createPin(capture, selection);
+        CapShotDaemon::createPin(capture, selection);
         if (mode == CR::SCREEN_MODE || mode == CR::FULLSCREEN_MODE) {
             AbstractLogger::info()
               << QObject::tr("Full screen screenshot pinned to screen");
@@ -508,7 +508,7 @@ void Lshot::exportCapture(const QPixmap& capture,
           widget, &ImgUploaderBase::uploadOk, [=, this](const QUrl& url) {
               if (ConfigHandler().copyURLAfterUpload()) {
                   if (!(tasks & CR::COPY)) {
-                      LshotDaemon::copyToClipboard(
+                      CapShotDaemon::copyToClipboard(
                         url.toString(), tr("URL copied to clipboard."));
                   }
                   widget->showPostUploadDialog();
@@ -522,14 +522,14 @@ void Lshot::exportCapture(const QPixmap& capture,
     }
 }
 
-void Lshot::setExternalWidget(bool b)
+void CapShot::setExternalWidget(bool b)
 {
     m_haveExternalWidget = b;
 }
-bool Lshot::haveExternalWidget()
+bool CapShot::haveExternalWidget()
 {
     return m_haveExternalWidget;
 }
 
 // STATIC ATTRIBUTES
-Lshot::Origin Lshot::m_origin = Lshot::DAEMON;
+CapShot::Origin CapShot::m_origin = CapShot::DAEMON;

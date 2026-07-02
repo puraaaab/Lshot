@@ -4,18 +4,18 @@ SPDX-FileCopyrightText: none
 SPDX-License-Identifier: CC0-1.0
 -->
 <component type="desktop-application">
-  <id>in.letmegrab.Lshot</id>
+  <id>in.letmegrab.CapShot</id>
   
   <metadata_license>CC0-1.0</metadata_license>
 
   <project_license>GPL-3.0-or-later</project_license>
 
-  <name>Lshot</name>
+  <name>CapShot</name>
   
-  <translation type="qt">lshot</translation>
+  <translation type="qt">CapShot</translation>
 
-  <developer id="org.lshot">
-    <name>Lshot Developers</name>
+  <developer id="org.CapShot">
+    <name>CapShot Developers</name>
   </developer>
 
   <supports>
@@ -48,36 +48,36 @@ SPDX-License-Identifier: CC0-1.0
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/large_demo.png</image>
-      <caption>Lshot Usage</caption>
+      <image>https://raw.githubusercontent.com/CapShot-org/CapShot/master/docs/images/large_demo.png</image>
+      <caption>CapShot Usage</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/small_demo.png</image>
+      <image>https://raw.githubusercontent.com/CapShot-org/CapShot/master/docs/images/small_demo.png</image>
       <caption>Demo of Pixelation, Arrow, Box, And Counter Bubble</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/launcher.png</image>
+      <image>https://raw.githubusercontent.com/CapShot-org/CapShot/master/docs/images/launcher.png</image>
       <caption>The Launcher Window</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/config_interface.png</image>
+      <image>https://raw.githubusercontent.com/CapShot-org/CapShot/master/docs/images/config_interface.png</image>
       <caption>Configuration Window - Interface tab</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/lshot-org/lshot/master/docs/images/config_shortcuts.png</image>
+      <image>https://raw.githubusercontent.com/CapShot-org/CapShot/master/docs/images/config_shortcuts.png</image>
       <caption>Configuration Window - Shortcuts tab</caption>
     </screenshot>
   </screenshots>
 
-  <url type="homepage">https://github.com/lshot-org/lshot</url>
-  <url type="bugtracker">https://github.com/lshot-org/lshot/issues</url>
-  <url type="translate">https://hosted.weblate.org/projects/lshot/</url>
-  <url type="contribute">https://github.com/lshot-org/lshot/blob/master/docs/CONTRIBUTING.md</url>
-  <url type="vcs-browser">https://github.com/lshot-org/lshot/</url>
+  <url type="homepage">https://github.com/CapShot-org/CapShot</url>
+  <url type="bugtracker">https://github.com/CapShot-org/CapShot/issues</url>
+  <url type="translate">https://hosted.weblate.org/projects/CapShot/</url>
+  <url type="contribute">https://github.com/CapShot-org/CapShot/blob/master/docs/CONTRIBUTING.md</url>
+  <url type="vcs-browser">https://github.com/CapShot-org/CapShot/</url>
 
-  <update_contact>https://github.com/lshot-org/lshot/issues/new</update_contact>
+  <update_contact>https://github.com/CapShot-org/CapShot/issues/new</update_contact>
 
-  <launchable type="desktop-id">in.letmegrab.Lshot.desktop</launchable>
+  <launchable type="desktop-id">in.letmegrab.CapShot.desktop</launchable>
 
   <branding>
     <color type="primary" scheme_preference="light">#d6a8e3</color>

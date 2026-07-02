@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Lshot
+Name=CapShot
 Name[zh_CN]=火焰截图
 GenericName=Screenshot tool
 GenericName[zh_CN]=屏幕截图工具
@@ -28,25 +28,25 @@ Comment[uk]=Потужний простий у використанні дода
 Comment[es]=Software de captura de pantalla potente y fácil de usar.
 Comment[de]=Schlichte, leistungsstarke Screenshot-Software
 Comment[pt_BR]=Software de captura de tela poderoso, mas simples de usar.
-Keywords=lshot;screenshot;capture;shutter;
-Keywords[zh_CN]=lshot;screenshot;capture;shutter;截图;屏幕;
-Keywords[fr]=lshot;capture d'écran;capter;shutter;
-Keywords[ja]=lshot;screenshot;capture;shutter;スクリーンショット;キャプチャー;
-Keywords[nl]=lshot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
-Keywords[nl_NL]=lshot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
-Keywords[es]=lshot;screenshot;capture;shutter;captura;
-Keywords[de]=lshot;screenshot;Bildschirmfoto;Aufnahme;
-Keywords[pt_BR]=lshot;screenshot;captura de tela;captura;shutter;
+Keywords=CapShot;screenshot;capture;shutter;
+Keywords[zh_CN]=CapShot;screenshot;capture;shutter;截图;屏幕;
+Keywords[fr]=CapShot;capture d'écran;capter;shutter;
+Keywords[ja]=CapShot;screenshot;capture;shutter;スクリーンショット;キャプチャー;
+Keywords[nl]=CapShot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
+Keywords[nl_NL]=CapShot;schermfoto;screenshot;schermafdruk;vastleggen;schermopname;
+Keywords[es]=CapShot;screenshot;capture;shutter;captura;
+Keywords[de]=CapShot;screenshot;Bildschirmfoto;Aufnahme;
+Keywords[pt_BR]=CapShot;screenshot;captura de tela;captura;shutter;
 Exec=@LAUNCHER_EXECUTABLE@
-Icon=in.letmegrab.Lshot
+Icon=in.letmegrab.CapShot
 Terminal=false
 Type=Application
 Categories=Graphics;
 StartupNotify=false
-StartupWMClass=lshot
+StartupWMClass=CapShot
 Actions=Configure;Capture;Launcher;
 X-DBUS-StartupType=Unique
-X-DBUS-ServiceName=in.letmegrab.Lshot
+X-DBUS-ServiceName=in.letmegrab.CapShot
 X-KDE-DBUS-Restricted-Interfaces=org.kde.kwin.Screenshot,org.kde.KWin.ScreenShot2
 
 [Desktop Action Configure]
@@ -64,7 +64,7 @@ Name[uk]=Налаштувати
 Name[es]=Configurar
 Name[de]=Einstellungen
 Name[pt_BR]=Configurar
-Exec=lshot config
+Exec=CapShot config
 
 [Desktop Action Capture]
 Name=Take screenshot
@@ -81,7 +81,7 @@ Name[nl_NL]=Schermfoto maken
 Name[es]=Tomar captura de pantalla
 Name[de]=Bildschirmfoto aufnehmen
 Name[pt_BR]=Capturar tela
-Exec=lshot gui
+Exec=CapShot gui
 
 [Desktop Action Launcher]
 Name=Open launcher
@@ -91,4 +91,4 @@ Name[nl_NL]=Starter openen
 Name[sk]=Otvoriť spúšťač
 Name[zh_CN]=打开启动器
 Name[pt_BR]=Abrir lançador
-Exec=lshot launcher
+Exec=CapShot launcher

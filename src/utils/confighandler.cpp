@@ -30,14 +30,14 @@ bool verifyLaunchFile()
     QString path = QStandardPaths::locate(QStandardPaths::GenericConfigLocation,
                                           "autostart/",
                                           QStandardPaths::LocateDirectory) +
-                   "Lshot.desktop";
+                   "CapShot.desktop";
     bool res = QFile(path).exists();
 #elif defined(Q_OS_WIN)
     QSettings bootUpSettings(
       "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
       QSettings::NativeFormat);
     bool res =
-      bootUpSettings.value("Lshot").toString() ==
+      bootUpSettings.value("CapShot").toString() ==
       QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
 #endif
     return res;
@@ -221,7 +221,7 @@ ConfigHandler::ConfigHandler()
                qApp->organizationName(),
                qApp->applicationName())
 #else
-  : m_settings(qApp->applicationDirPath() + "/lshot.ini",
+  : m_settings(qApp->applicationDirPath() + "/CapShot.ini",
                QSettings::IniFormat)
 #endif
 {
@@ -292,13 +292,13 @@ void ConfigHandler::setStartupLaunch(const bool start)
                         << "-e"
                         << "tell application \"System Events\" to make login "
                            "item at end with properties {name: "
-                           "\"Lshot\",path:\"/Applications/"
-                           "lshot.app\", hidden:false}");
+                           "\"CapShot\",path:\"/Applications/"
+                           "CapShot.app\", hidden:false}");
     } else {
         process.start("osascript",
                       QStringList() << "-e"
                                     << "tell application \"System Events\" to "
-                                       "delete login item \"Lshot\"");
+                                       "delete login item \"CapShot\"");
     }
     if (!process.waitForFinished()) {
         qWarning() << "Login items is changed. " << process.errorString();
@@ -315,11 +315,11 @@ void ConfigHandler::setStartupLaunch(const bool start)
         autostartDir.mkpath(".");
     }
 
-    QFile file(path + "Lshot.desktop");
+    QFile file(path + "CapShot.desktop");
     if (start) {
         if (file.open(QIODevice::WriteOnly)) {
-            QByteArray data("[Desktop Entry]\nName=lshot\nIcon=lshot"
-                            "\nExec=lshot\nTerminal=false\nType=Application"
+            QByteArray data("[Desktop Entry]\nName=CapShot\nIcon=CapShot"
+                            "\nExec=CapShot\nTerminal=false\nType=Application"
                             "\nX-GNOME-Autostart-enabled=true\n");
             file.write(data);
         }
@@ -330,7 +330,7 @@ void ConfigHandler::setStartupLaunch(const bool start)
     QSettings bootUpSettings(
       "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run",
       QSettings::NativeFormat);
-    // set workdir for lshot on startup
+    // set workdir for CapShot on startup
     QSettings bootUpPath(
       "HKEY_CURRENT_USER\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\App "
       "Paths",
@@ -338,18 +338,18 @@ void ConfigHandler::setStartupLaunch(const bool start)
     if (start) {
         QString app_path =
           QDir::toNativeSeparators(QCoreApplication::applicationFilePath());
-        bootUpSettings.setValue("Lshot", app_path);
+        bootUpSettings.setValue("CapShot", app_path);
 
         // set application workdir
-        bootUpPath.beginGroup("lshot.exe");
+        bootUpPath.beginGroup("CapShot.exe");
         bootUpPath.setValue("Path", QCoreApplication::applicationDirPath());
         bootUpPath.endGroup();
 
     } else {
-        bootUpSettings.remove("Lshot");
+        bootUpSettings.remove("CapShot");
 
         // remove application workdir
-        bootUpPath.beginGroup("lshot.exe");
+        bootUpPath.beginGroup("CapShot.exe");
         bootUpPath.remove("");
         bootUpPath.endGroup();
     }
@@ -478,7 +478,7 @@ QString ConfigHandler::shortcut(const QString& actionName)
     QString setting = CONFIG_GROUP_SHORTCUTS "/" + actionName;
     QString shortcut = value(setting).toString();
     if (!m_settings.contains(setting)) {
-        // The action uses a shortcut that is a lshot default
+        // The action uses a shortcut that is a CapShot default
         // (not set explicitly by user)
         m_settings.beginGroup(CONFIG_GROUP_SHORTCUTS);
         for (auto& otherAction : m_settings.allKeys()) {
@@ -621,7 +621,7 @@ bool ConfigHandler::checkUnrecognizedSettings(AbstractLogger* log,
  * @return Whether the config passes this check.
  *
  * @note It is not considered a conflict if action A uses shortcut S because it
- * is the lshot default (not because the user explicitly configured it), and
+ * is the CapShot default (not because the user explicitly configured it), and
  * action B uses the same shortcut.
  */
 bool ConfigHandler::checkShortcutConflicts(AbstractLogger* log) const
@@ -638,7 +638,7 @@ bool ConfigHandler::checkShortcutConflicts(AbstractLogger* log) const
             // The check will pass if:
             // - one shortcut is empty (the action doesn't use a shortcut)
             // - or one of the settings is not found in m_settings, i.e.
-            //   user wants to use lshot's default shortcut for the action
+            //   user wants to use CapShot's default shortcut for the action
             // - or the shortcuts for both actions are different
             if (!(value1.isEmpty() || !m_settings.contains(*key1) ||
                   !m_settings.contains(*key2) || value1 != value2)) {

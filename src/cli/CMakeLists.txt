@@ -1,1 +1,1 @@
-target_sources(lshot PRIVATE commandlineparser.cpp commandoption.cpp commandargument.cpp)
+target_sources(CapShot PRIVATE commandlineparser.cpp commandoption.cpp commandargument.cpp)

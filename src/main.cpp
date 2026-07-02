@@ -13,8 +13,8 @@
 #include "config/cacheutils.h"
 #include "config/styleoverride.h"
 #include "core/capturerequest.h"
-#include "core/lshot.h"
-#include "core/lshotdaemon.h"
+#include "core/CapShot.h"
+#include "core/CapShotdaemon.h"
 #include "utils/abstractlogger.h"
 #include "utils/confighandler.h"
 #include "utils/filenamehandler.h"
@@ -22,7 +22,7 @@
 #include "utils/valuehandler.h"
 
 #if !(defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-#include "core/lshotdbusadapter.h"
+#include "core/CapShotdbusadapter.h"
 #include <QDBusConnection>
 #include <QDBusMessage>
 #endif
@@ -65,22 +65,22 @@ static int setup_unix_signal_handlers()
 
 int requestCaptureAndWait(const CaptureRequest& req)
 {
-    Lshot* lshot = Lshot::instance();
-    lshot->requestCapture(req);
-    QObject::connect(lshot, &Lshot::captureTaken, [&](const QPixmap&) {
+    CapShot* CapShot = CapShot::instance();
+    CapShot->requestCapture(req);
+    QObject::connect(CapShot, &CapShot::captureTaken, [&](const QPixmap&) {
 #if defined(Q_OS_MACOS)
         // Only useful on MacOS because each instance hosts its own widgets
-        if (!LshotDaemon::isThisInstanceHostingWidgets()) {
+        if (!CapShotDaemon::isThisInstanceHostingWidgets()) {
             qApp->exit(0);
         }
 #else
         // if this instance is not daemon, make sure it exit after caputre finish
-        if (LshotDaemon::instance() == nullptr && !Lshot::instance()->haveExternalWidget()) {
+        if (CapShotDaemon::instance() == nullptr && !CapShot::instance()->haveExternalWidget()) {
             qApp->exit(E_OK);
         }
 #endif
     });
-    QObject::connect(lshot, &Lshot::captureFailed, []() {
+    QObject::connect(CapShot, &CapShot::captureFailed, []() {
         AbstractLogger::Target logTarget = static_cast<AbstractLogger::Target>(
           ConfigHandler().showAbortNotification()
             ? AbstractLogger::Target::Default
@@ -94,7 +94,7 @@ int requestCaptureAndWait(const CaptureRequest& req)
 
 QSharedMemory* guiMutexLock()
 {
-    QString key = "in.letmegrab.Lshot-" APP_VERSION;
+    QString key = "in.letmegrab.CapShot-" APP_VERSION;
     auto* shm = new QSharedMemory(key);
 #ifdef Q_OS_UNIX
     // Destroy shared memory if the last instance crashed on Unix
@@ -136,11 +136,11 @@ void configureTranslation(QTranslator& translator, QTranslator& qtTranslator)
         if (ConfigHandler().uiLanguage() == QStringLiteral("auto")) {
             QLocale l;
             qWarning() << QStringLiteral(
-                            "No Lshot translation found for %1")
+                            "No CapShot translation found for %1")
                             .arg(l.uiLanguages().join(", "));
         } else {
             qWarning() << QStringLiteral(
-                            "No Lshot translation found for %1")
+                            "No CapShot translation found for %1")
                             .arg(ConfigHandler().uiLanguage());
         }
     }
@@ -208,11 +208,11 @@ int main(int argc, char* argv[])
     qRegisterMetaType<QList<int>>();
 
     QCoreApplication::setApplicationVersion(APP_VERSION);
-    QCoreApplication::setApplicationName(QStringLiteral("lshot"));
-    QCoreApplication::setOrganizationName(QStringLiteral("lshot"));
+    QCoreApplication::setApplicationName(QStringLiteral("CapShot"));
+    QCoreApplication::setOrganizationName(QStringLiteral("CapShot"));
     QNetworkProxyFactory::setUseSystemConfiguration(true);
 
-    // no arguments, just launch Lshot
+    // no arguments, just launch CapShot
     if (argc == 1) {
         QApplication app(argc, argv);
         configureTranslation(translator, qtTranslator);
@@ -223,7 +223,7 @@ int main(int argc, char* argv[])
         auto signalDaemon = SignalDaemon();
 #endif
         auto kdsa =
-          KDSingleApplication(QStringLiteral("in.letmegrab.Lshot"));
+          KDSingleApplication(QStringLiteral("in.letmegrab.CapShot"));
 
         if (!kdsa.isPrimaryInstance() &&
             !ConfigHandler().allowMultipleGuiInstances()) {
@@ -232,8 +232,8 @@ int main(int argc, char* argv[])
 #endif
 
         configureApp(true, translator, qtTranslator);
-        auto c = Lshot::instance();
-        LshotDaemon::start();
+        auto c = CapShot::instance();
+        CapShotDaemon::start();
 
 #if defined(USE_KDSINGLEAPPLICATION) &&                                        \
   (defined(Q_OS_MACOS) || defined(Q_OS_WIN))
@@ -241,20 +241,20 @@ int main(int argc, char* argv[])
             QObject::connect(
               &kdsa,
               &KDSingleApplication::messageReceived,
-              LshotDaemon::instance(),
-              &LshotDaemon::messageReceivedFromSecondaryInstance);
+              CapShotDaemon::instance(),
+              &CapShotDaemon::messageReceivedFromSecondaryInstance);
         }
 #endif
 
 #if !(defined(Q_OS_MACOS) || defined(Q_OS_WIN))
-        new LshotDBusAdapter(c);
+        new CapShotDBusAdapter(c);
         QDBusConnection dbus = QDBusConnection::sessionBus();
         if (!dbus.isConnected()) {
             AbstractLogger::error()
               << QObject::tr("Unable to connect via DBus");
         }
         dbus.registerObject(QStringLiteral("/"), c);
-        dbus.registerService(QStringLiteral("in.letmegrab.Lshot"));
+        dbus.registerService(QStringLiteral("in.letmegrab.CapShot"));
 #endif
         return qApp->exec();
     }
@@ -269,7 +269,7 @@ int main(int argc, char* argv[])
     // Add description
     parser.setDescription(
       QObject::tr("Powerful yet simple to use screenshot software."));
-    parser.setGeneralErrorMessage(QObject::tr("See") + " lshot --help.");
+    parser.setGeneralErrorMessage(QObject::tr("See") + " CapShot --help.");
     // Arguments
     CommandArgument fullArgument(
       QStringLiteral("full"),
@@ -280,7 +280,7 @@ int main(int argc, char* argv[])
       QStringLiteral("gui"),
       QObject::tr("Start a manual capture in GUI mode."));
     CommandArgument configArgument(QStringLiteral("config"),
-                                   QObject::tr("Configure") + " lshot.");
+                                   QObject::tr("Configure") + " CapShot.");
     CommandArgument screenArgument(
       QStringLiteral("screen"),
       QObject::tr("Capture a screenshot of the specified monitor."));
@@ -459,17 +459,17 @@ int main(int argc, char* argv[])
 
     // PROCESS DATA
     //--------------
-    Lshot::setOrigin(Lshot::CLI);
+    CapShot::setOrigin(CapShot::CLI);
     if (parser.isSet(helpOption) || parser.isSet(versionOption)) {
     } else if (parser.isSet(launcherArgument)) { // LAUNCHER
         reinitializeAsQApplication(argc, argv, translator, qtTranslator);
-        Lshot* lshot = Lshot::instance();
-        lshot->launcher();
+        CapShot* CapShot = CapShot::instance();
+        CapShot->launcher();
         qApp->exec();
     } else if (parser.isSet(guiArgument)) { // GUI
         reinitializeAsQApplication(argc, argv, translator, qtTranslator);
 
-        // Prevent multiple instances of 'lshot gui' from running if not
+        // Prevent multiple instances of 'CapShot gui' from running if not
         // configured to do so.
         if (!ConfigHandler().allowMultipleGuiInstances()) {
             auto* mutex = guiMutexLock();
@@ -589,7 +589,7 @@ int main(int argc, char* argv[])
                 AbstractLogger::error()
                   << "The 'screen' command does not support "
                      "'--region screen<N>'.\n"
-                     "See lshot --help.\n";
+                     "See CapShot --help.\n";
                 exit(1);
             }
             req.setInitialSelection(Region().value(region).toRect());
@@ -642,7 +642,7 @@ int main(int argc, char* argv[])
             reinitializeAsQApplication(argc, argv, translator, qtTranslator);
             QObject::connect(
               qApp, &QApplication::lastWindowClosed, qApp, &QApplication::quit);
-            Lshot::instance()->config();
+            CapShot::instance()->config();
             qApp->exec();
         } else {
             ConfigHandler config;

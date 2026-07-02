@@ -5,14 +5,14 @@
 
 #include <QtDBus/QDBusAbstractAdaptor>
 
-class LshotDBusAdapter : public QDBusAbstractAdaptor
+class CapShotDBusAdapter : public QDBusAbstractAdaptor
 {
     Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "in.letmegrab.Lshot")
+    Q_CLASSINFO("D-Bus Interface", "in.letmegrab.CapShot")
 
 public:
-    explicit LshotDBusAdapter(QObject* parent = nullptr);
-    virtual ~LshotDBusAdapter();
+    explicit CapShotDBusAdapter(QObject* parent = nullptr);
+    virtual ~CapShotDBusAdapter();
 
 public slots:
     Q_NOREPLY void captureScreen();

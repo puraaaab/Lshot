@@ -3,20 +3,20 @@ cmake_minimum_required(VERSION 3.22)
 
 set(FLAMESHOT_VERSION 14.0.0)
 
-# Lshot-org
-set(GIT_API_URL "https://api.github.com/repos/puraaaab/Lshot/releases/latest")
+# CapShot-org
+set(GIT_API_URL "https://api.github.com/repos/puraaaab/CapShot/releases/latest")
 
 project(
-  lshot
+  CapShot
   VERSION ${FLAMESHOT_VERSION}
   LANGUAGES CXX)
-set(PROJECT_NAME_CAPITALIZED "Lshot")
+set(PROJECT_NAME_CAPITALIZED "CapShot")
 
 include(FetchContent)
 #Must be set before fetching external content!
 #QT_DEFAULT_MAJOR_VERSION used by QHotkey
 set(QT_DEFAULT_MAJOR_VERSION 6 CACHE STRING "")
-#QT_VERSION_MAJOR used by Lshot and QtColorWidgets
+#QT_VERSION_MAJOR used by CapShot and QtColorWidgets
 set(QT_VERSION_MAJOR 6 CACHE STRING "")
 #BUILD_SHARED_LIBS used by QHotkey and QtColorWidgets
 option(BUILD_SHARED_LIBS OFF)
@@ -152,12 +152,12 @@ endif()
 add_subdirectory(src)
 
 # CPack
-set(CPACK_PACKAGE_VENDOR "lshot-org")
+set(CPACK_PACKAGE_VENDOR "CapShot-org")
 set(CPACK_PACKAGE_DESCRIPTION_SUMMARY "Powerful yet simple to use screenshot software.")
 set(CPACK_PACKAGE_VERSION ${PROJECT_VERSION})
-set(CPACK_PACKAGE_HOMEPAGE_URL "https://lshot.org")
-set(CPACK_PACKAGE_CONTACT "lshot-org developers <info@lshot.org>")
-set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/data/img/app/in.letmegrab.Lshot.svg") # TODO: Can any generator make
+set(CPACK_PACKAGE_HOMEPAGE_URL "https://capshot.org")
+set(CPACK_PACKAGE_CONTACT "CapShot developers <info@capshot.org>")
+set(CPACK_PACKAGE_ICON "${CMAKE_SOURCE_DIR}/data/img/app/in.letmegrab.CapShot.svg") # TODO: Can any generator make
 # use of this?
 set(CPACK_PACKAGE_DESCRIPTION_FILE "${CMAKE_SOURCE_DIR}/README.md") # TODO: Where is this used? Do we need a better
 # source?
@@ -166,37 +166,38 @@ if(WIN32)
   # Include all dynamically linked runtime libraries such as MSVCRxxx.dll
   include(InstallRequiredSystemLibraries)
 
+  set(CPACK_GENERATOR WIX ZIP)
+  set(CPACK_PACKAGE_NAME "${PROJECT_NAME_CAPITALIZED}")
+  set(CPACK_PACKAGE_INSTALL_DIRECTORY "${PROJECT_NAME_CAPITALIZED}")
+  set(CPACK_PACKAGE_EXECUTABLES ${PROJECT_NAME} "${PROJECT_NAME_CAPITALIZED}")
+  set(CPACK_CREATE_DESKTOP_LINKS ${PROJECT_NAME})
+
   if(USE_PORTABLE_CONFIG)
-    set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-win64")
-    set(CPACK_GENERATOR ZIP)
-
+    set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-win64-portable")
   else()
-    set(CPACK_GENERATOR WIX ZIP)
-    set(CPACK_PACKAGE_NAME "${PROJECT_NAME_CAPITALIZED}")
-    set(CPACK_PACKAGE_INSTALL_DIRECTORY "${PROJECT_NAME_CAPITALIZED}")
-    set(CPACK_PACKAGE_EXECUTABLES ${PROJECT_NAME} "${PROJECT_NAME_CAPITALIZED}")
-    set(CPACK_CREATE_DESKTOP_LINKS ${PROJECT_NAME})
-
-    # WIX (Windows .msi installer)
-    # 48x48 pixels
-    set(CPACK_WIX_PRODUCT_ICON "${CMAKE_SOURCE_DIR}/data/img/app/lshot.ico")
-    # Supported languages can be found at http://wixtoolset.org/documentation/manual/v3/wixui/wixui_localization.html
-    # set(CPACK_WIX_CULTURES "ar-SA,bg-BG,ca-ES,hr-HR,cs-CZ,da-DK,nl-NL,en-US,et-EE,fi-FI,fr-FR,de-DE")
-    set(CPACK_WIX_UI_BANNER "${CMAKE_SOURCE_DIR}/packaging/win-installer/Bitmaps/CPACK_WIX_UI_BANNER.BMP")
-    set(CPACK_WIX_UI_DIALOG "${CMAKE_SOURCE_DIR}/packaging/win-installer/Bitmaps/CPACK_WIX_UI_DIALOG.BMP")
-    set(CPACK_WIX_PROPERTY_ARPHELPLINK "${CPACK_PACKAGE_HOMEPAGE_URL}")
-    set(CPACK_WIX_PROPERTY_ARPURLINFOABOUT "${CPACK_PACKAGE_HOMEPAGE_URL}")
-    set(CPACK_WIX_ROOT_FEATURE_DESCRIPTION "${CPACK_PACKAGE_DESCRIPTION_SUMMARY}")
-    set(CPACK_WIX_LIGHT_EXTRA_FLAGS "-dcl:high") # set high compression
-
-    set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/packaging/win-installer/LICENSE/GPL-3.0.txt")
-    set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
-
-    set(CPACK_WIX_UPGRADE_GUID "26D8062A-66D9-48D9-8924-42090FB9B3F9")
+    set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-win64")
   endif()
+
+  # WIX (Windows .msi installer)
+  # 48x48 pixels
+  set(CPACK_WIX_PRODUCT_ICON "${CMAKE_SOURCE_DIR}/data/img/app/CapShot.ico")
+  # Supported languages can be found at http://wixtoolset.org/documentation/manual/v3/wixui/wixui_localization.html
+  # set(CPACK_WIX_CULTURES "ar-SA,bg-BG,ca-ES,hr-HR,cs-CZ,da-DK,nl-NL,en-US,et-EE,fi-FI,fr-FR,de-DE")
+  set(CPACK_WIX_UI_BANNER "${CMAKE_SOURCE_DIR}/packaging/win-installer/Bitmaps/CPACK_WIX_UI_BANNER.BMP")
+  set(CPACK_WIX_UI_DIALOG "${CMAKE_SOURCE_DIR}/packaging/win-installer/Bitmaps/CPACK_WIX_UI_DIALOG.BMP")
+  set(CPACK_WIX_PROPERTY_ARPHELPLINK "${CPACK_PACKAGE_HOMEPAGE_URL}")
+  set(CPACK_WIX_PROPERTY_ARPURLINFOABOUT "${CPACK_PACKAGE_HOMEPAGE_URL}")
+  set(CPACK_WIX_ROOT_FEATURE_DESCRIPTION "${CPACK_PACKAGE_DESCRIPTION_SUMMARY}")
+  set(CPACK_WIX_LIGHT_EXTRA_FLAGS "-dcl:high") # set high compression
+
+  set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_SOURCE_DIR}/packaging/win-installer/LICENSE/GPL-3.0.txt")
+  set(CPACK_RESOURCE_FILE_README "${CMAKE_SOURCE_DIR}/README.md")
+
+  set(CPACK_WIX_UPGRADE_GUID "26D8062A-66D9-48D9-8924-42090FB9B3F9")
+  set(CPACK_WIX_PATCH_FILE "${CMAKE_SOURCE_DIR}/packaging/win-installer/wix_patch.xml")
 elseif(APPLE)
   set(CPACK_INCLUDE_TOPLEVEL_DIRECTORY 0)
-  set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-osx")
+  set(CPACK_PACKAGE_FILE_NAME "CapShot-${PROJECT_VERSION}-osx")
   set(CPACK_GENERATOR ZIP)
 else()
   set(CPACK_PACKAGE_FILE_NAME "${PROJECT_NAME}-${PROJECT_VERSION}-linux")

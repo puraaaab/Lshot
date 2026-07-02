@@ -1,5 +1,5 @@
 target_sources(
-  lshot
+  CapShot
   PRIVATE buttonlistview.cpp
           cacheutils.cpp
           clickablelabel.cpp

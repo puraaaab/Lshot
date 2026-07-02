@@ -1,6 +1,6 @@
 # Required to generate MOC
 target_sources(
-  lshot
+  CapShot
   PRIVATE abstractlogger.h
           filenamehandler.h
           screengrabber.h
@@ -10,7 +10,7 @@ target_sources(
 )
 
 target_sources(
-  lshot
+  CapShot
   PRIVATE abstractlogger.cpp
           filenamehandler.cpp
           screengrabber.cpp
@@ -30,7 +30,7 @@ target_sources(
 
 IF (UNIX AND NOT APPLE)
 target_sources(
-  lshot
+  CapShot
   PRIVATE request.h
           request.cpp
 )
@@ -38,7 +38,7 @@ ENDIF()
 
 IF (WIN32)
   target_sources(
-    lshot
+    CapShot
     PRIVATE winlnkfileparse.cpp
   )
 ENDIF()

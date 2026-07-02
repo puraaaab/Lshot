@@ -1,0 +1,7 @@
+<CPackWiXPatch>
+    <CPackWiXFragment Id="CM_CP_Unspecified.CapShot.exe">
+        <RegistryKey Root="HKLM" Key="Software\Microsoft\Windows\CurrentVersion\Run">
+            <RegistryValue Type="string" Name="CapShot" Value="&quot;[#CM_FP_Unspecified.CapShot.exe]&quot;" KeyPath="no"/>
+        </RegistryKey>
+    </CPackWiXFragment>
+</CPackWiXPatch>

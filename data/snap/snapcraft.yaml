@@ -1,11 +1,11 @@
 ---
 
-name: flameshot
-adopt-info: flameshot
+name: capshot
+adopt-info: capshot
 base: core18
 summary: Powerful yet simple to use screenshot software
 description: |
-  A powerful open source screenshot and annotation tool for Linux, Flameshot
+  A powerful open source screenshot and annotation tool for Linux, CapShot
   has a varied set of markup tools available, which include Freehand drawing,
   Lines, Arrows, Boxes, Circles, Highlighting, Blur. Additionally, you can
   customise the color, size and/or thickness of many of these image annotation
@@ -19,8 +19,8 @@ architectures:
 
 
 apps:
-  flameshot:
-    command: flameshot
+  capshot:
+    command: CapShot
     desktop: usr/share/applications/org.flameshot.Flameshot.desktop
     extensions:
       - kde-neon
@@ -63,7 +63,7 @@ parts:
     override-build: |
       snapcraftctl build
       # Correct the Icon path
-      sed -i 's|^Exec=flameshot|Exec=/snap/bin/org.flameshot.Flameshot|' ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/org.flameshot.Flameshot.desktop
+      sed -i 's|^Exec=CapShot|Exec=/snap/bin/org.flameshot.Flameshot|' ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/org.flameshot.Flameshot.desktop
       sed -i 's|^Icon=.*|Icon=${SNAP}/usr/share/icons/hicolor/scalable/apps/org.flameshot.Flameshot.svg|' ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/org.flameshot.Flameshot.desktop
       sed -i 's/^\(Name\(\[.\+\]\)\?=.*\)$/\1 (Snappy Edition)/g' ${SNAPCRAFT_PART_INSTALL}/usr/share/applications/org.flameshot.Flameshot.desktop
     build-packages:

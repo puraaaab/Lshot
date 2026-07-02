@@ -263,14 +263,14 @@ void ShortcutsWidget::checkPrintScreenForcesSnipping()
     if (!isPrintScreenKeyForSnippingDisabled() &&
         !ConfigHandler().ignorePrntScrForcesSnipping()) {
         QMessageBox msgBox;
-        msgBox.setWindowTitle("Lshot");
+          msgBox.setWindowTitle("CapShot");
         msgBox.setIcon(QMessageBox::Question);
         msgBox.setText(tr("It seems, that Windows forces to open its screenshot"
                           " tool when the 'Print Screen' key is pressed. Would "
-                          "you like to disable this so that Lshot can use "
+                                  "you like to disable this so that CapShot can use "
                           "the 'Print Screen' key?") +
                        "\n\n" +
-                       tr("Lshot must be restarted for changes to take "
+                              tr("CapShot must be restarted for changes to take "
                           "effect."));
         QPushButton* yesBtn = msgBox.addButton(QMessageBox::Yes);
         QPushButton* noBtn = msgBox.addButton(QMessageBox::No);
@@ -283,7 +283,7 @@ void ShortcutsWidget::checkPrintScreenForcesSnipping()
         if (msgBox.clickedButton() == yesBtn) {
             if (!disablePrintScreenKeyForSnipping()) {
                 QMessageBox::warning(
-                  this, "Lshot", tr("The registry could not be changed!"));
+                this, "CapShot", tr("The registry could not be changed!"));
             }
         } else if (msgBox.clickedButton() == noDontAskAgainBtn) {
             ConfigHandler().setIgnorePrntScrForcesSnipping(true);
@@ -314,11 +314,11 @@ bool ShortcutsWidget::disablePrintScreenKeyForSnipping()
 void ShortcutsWidget::initMsScreenclipCheckbox()
 {
     m_registerMsScreenclip =
-      new QCheckBox(tr("Register Lshot as MS-SCREENCLIP application "
+            new QCheckBox(tr("Register CapShot as MS-SCREENCLIP application "
                        "(administrator privileges required)"),
                     this);
     m_registerMsScreenclip->setToolTip(
-      tr("After registering, you can select Lshot as the default "
+            tr("After registering, you can select CapShot as the default "
          "screenshot application in Windows Settings."));
     m_registerMsScreenclip->setChecked(isMsScreenclipRegistered());
     m_layout->addWidget(m_registerMsScreenclip);
@@ -329,9 +329,9 @@ void ShortcutsWidget::initMsScreenclipCheckbox()
               if (!registerMsScreenclip()) {
                   QMessageBox::warning(
                     this,
-                    "Lshot",
+                                        "CapShot",
                     tr("The registry could not be changed!") + "\n" +
-                      tr("You may start Lshot as administrator ONCE and "
+                                            tr("You may start CapShot as administrator ONCE and "
                          "try again!"));
                   m_registerMsScreenclip->setChecked(false);
               }
@@ -339,9 +339,9 @@ void ShortcutsWidget::initMsScreenclipCheckbox()
               if (!unregisterMsScreenclip()) {
                   QMessageBox::warning(
                     this,
-                    "Lshot",
+                                        "CapShot",
                     tr("The registry could not be changed!") + "\n" +
-                      tr("You may start Lshot as administrator ONCE and "
+                                            tr("You may start CapShot as administrator ONCE and "
                          "try again!"));
                   m_registerMsScreenclip->setChecked(true);
               }
@@ -352,24 +352,24 @@ void ShortcutsWidget::initMsScreenclipCheckbox()
 bool ShortcutsWidget::isMsScreenclipRegistered()
 {
     QSettings URLAssociations(
-      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Lshot\\Capabilities\\URLAssociations",
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\CapShot\\Capabilities\\URLAssociations",
       QSettings::NativeFormat);
     QString value = URLAssociations.value("ms-screenclip", "").toString();
-    if (value.toLower() != "lshot")
+    if (value.toLower() != "CapShot")
         return false;
 
     QSettings RegisteredApplications(
       "HKEY_LOCAL_MACHINE\\SOFTWARE\\RegisteredApplications",
       QSettings::NativeFormat);
-    value = RegisteredApplications.value("Lshot", "").toString();
+    value = RegisteredApplications.value("CapShot", "").toString();
     if (value.toLower() !=
-        QString("SOFTWARE\\Lshot\\Capabilities").toLower())
+        QString("SOFTWARE\\CapShot\\Capabilities").toLower())
         return false;
 
-    QSettings LshotShellCmd(
-      "HKEY_CURRENT_USER\\Software\\Classes\\Lshot\\Shell\\Open\\command",
+    QSettings CapShotShellCmd(
+      "HKEY_CURRENT_USER\\Software\\Classes\\CapShot\\Shell\\Open\\command",
       QSettings::NativeFormat);
-    value = LshotShellCmd.value(".").toString();
+    value = CapShotShellCmd.value(".").toString();
     if (value.toLower() != QString("\"" +
                                    QDir::toNativeSeparators(
                                      QCoreApplication::applicationFilePath()) +
@@ -383,9 +383,9 @@ bool ShortcutsWidget::isMsScreenclipRegistered()
 bool ShortcutsWidget::registerMsScreenclip()
 {
     QSettings URLAssociations(
-      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Lshot\\Capabilities\\URLAssociations",
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\CapShot\\Capabilities\\URLAssociations",
       QSettings::NativeFormat);
-    URLAssociations.setValue("ms-screenclip", "Lshot");
+    URLAssociations.setValue("ms-screenclip", "CapShot");
     URLAssociations.sync();
     if (QSettings::AccessError == URLAssociations.status()) {
         return false;
@@ -394,22 +394,22 @@ bool ShortcutsWidget::registerMsScreenclip()
     QSettings RegisteredApplications(
       "HKEY_LOCAL_MACHINE\\SOFTWARE\\RegisteredApplications",
       QSettings::NativeFormat);
-    RegisteredApplications.setValue("Lshot",
-                                    "SOFTWARE\\Lshot\\Capabilities");
+    RegisteredApplications.setValue("CapShot",
+                                    "SOFTWARE\\CapShot\\Capabilities");
     RegisteredApplications.sync();
     if (QSettings::AccessError == RegisteredApplications.status()) {
         return false;
     }
 
-    QSettings LshotShellCmd(
-      "HKEY_CURRENT_USER\\Software\\Classes\\Lshot\\Shell\\Open\\command",
+    QSettings CapShotShellCmd(
+      "HKEY_CURRENT_USER\\Software\\Classes\\CapShot\\Shell\\Open\\command",
       QSettings::NativeFormat);
-    LshotShellCmd.setValue(
+    CapShotShellCmd.setValue(
       ".",
       "\"" + QDir::toNativeSeparators(QCoreApplication::applicationFilePath()) +
         "\" gui");
-    LshotShellCmd.sync();
-    if (QSettings::AccessError == LshotShellCmd.status()) {
+    CapShotShellCmd.sync();
+    if (QSettings::AccessError == CapShotShellCmd.status()) {
         return false;
     }
 
@@ -418,25 +418,25 @@ bool ShortcutsWidget::registerMsScreenclip()
 
 bool ShortcutsWidget::unregisterMsScreenclip()
 {
-    QSettings LshotShellCmd("HKEY_CURRENT_USER\\Software\\Classes",
+    QSettings CapShotShellCmd("HKEY_CURRENT_USER\\Software\\Classes",
                                 QSettings::NativeFormat);
-    LshotShellCmd.remove("Lshot");
-    LshotShellCmd.sync();
-    if (QSettings::AccessError == LshotShellCmd.status()) {
+    CapShotShellCmd.remove("CapShot");
+    CapShotShellCmd.sync();
+    if (QSettings::AccessError == CapShotShellCmd.status()) {
         return false;
     }
 
     QSettings RegisteredApplications(
       "HKEY_LOCAL_MACHINE\\SOFTWARE\\RegisteredApplications",
       QSettings::NativeFormat);
-    RegisteredApplications.remove("Lshot");
+    RegisteredApplications.remove("CapShot");
     RegisteredApplications.sync();
     if (QSettings::AccessError == RegisteredApplications.status()) {
         return false;
     }
 
     QSettings URLAssociations(
-      "HKEY_LOCAL_MACHINE\\SOFTWARE\\Lshot\\Capabilities\\URLAssociations",
+      "HKEY_LOCAL_MACHINE\\SOFTWARE\\CapShot\\Capabilities\\URLAssociations",
       QSettings::NativeFormat);
     URLAssociations.remove("ms-screenclip");
     URLAssociations.sync();

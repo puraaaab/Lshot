@@ -1,11 +1,11 @@
-#compdef lshot
+#compdef CapShot
 
-# Shell completion for lshot command
-# To be installed in "/usr/share/bash-completion/completions/lshot"
+# Shell completion for CapShot command
+# To be installed in "/usr/share/bash-completion/completions/CapShot"
 # and "/usr/share/zsh/site-functions/"
 
 
-_lshot() {
+_CapShot() {
 	local prev cur cmd gui_opts full_opts config_opts
 	COMPREPLY=()
 
@@ -75,4 +75,4 @@ if [[ -n ${ZSH_VERSION} ]]; then
 	bashcompinit
 fi
 
-complete -F _lshot lshot
+complete -F _CapShot CapShot

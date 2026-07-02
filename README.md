@@ -2,10 +2,10 @@
   <p>
     <h1>
       <a href="https://github.com/flameshot-org/flameshot">
-        <img src="data/img/app/org.flameshot.Flameshot.svg" alt="Flameshot" />
+        <img src="data/img/app/org.flameshot.Flameshot.svg" alt="CapShot" />
       </a>
       <br />
-      Flameshot
+      CapShot
     </h1>
     <h4>Powerful yet simple to use screenshot software.</h4>
   </p>
@@ -151,7 +151,7 @@ Example commands:
 
 In case of doubt choose the first or the second command as shortcut in your favorite desktop environment.
 
-A systray icon will be in your system's panel while Flameshot is running.
+A systray icon will be in your system's panel while CapShot is running.
 Do a right click on the tray icon and you'll see some menu items to open the configuration window and the information window.
 Check out the About window to see all available shortcuts in the graphical capture mode.
 

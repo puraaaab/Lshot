@@ -68,7 +68,7 @@ void UpdateNotificationWidget::setAppLatestVersion(const QString& latestVersion)
 {
     m_appLatestVersion = latestVersion;
     QString newVersion =
-      tr("New Lshot version %1 is available").arg(latestVersion);
+    tr("New CapShot version %1 is available").arg(latestVersion);
     m_notification->setText(newVersion);
 }
 

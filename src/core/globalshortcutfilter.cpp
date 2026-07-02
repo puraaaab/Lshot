@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2017-2019 Alejandro Sirgo Rica & Contributors
 
 #include "globalshortcutfilter.h"
-#include "core/lshot.h"
+#include "core/CapShot.h"
 
 #include <qt_windows.h>
 
@@ -35,13 +35,13 @@ bool GlobalShortcutFilter::nativeEventFilter(const QByteArray& eventType,
 #ifdef ENABLE_IMGUR
         // Show screenshots history
         if (VK_SNAPSHOT == keycode && MOD_SHIFT == modifiers) {
-            Lshot::instance()->history();
+            CapShot::instance()->history();
             return true;
         }
 #endif
         // Capture screen
         if (VK_SNAPSHOT == keycode && 0 == modifiers) {
-            Lshot::instance()->requestCapture(
+            CapShot::instance()->requestCapture(
               CaptureRequest(CaptureRequest::GRAPHICAL_MODE));
             return true;
         }

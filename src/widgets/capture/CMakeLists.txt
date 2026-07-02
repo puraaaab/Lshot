@@ -1,6 +1,6 @@
 # Required to generate MOC
 target_sources(
-        lshot
+        CapShot
         PRIVATE buttonhandler.h
         capturebutton.h
         capturetoolbutton.h
@@ -14,7 +14,7 @@ target_sources(
         modificationcommand.h)
 
 target_sources(
-        lshot
+        CapShot
         PRIVATE buttonhandler.cpp
         capturebutton.cpp
         capturetoolbutton.cpp

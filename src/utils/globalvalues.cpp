@@ -16,25 +16,25 @@ int GlobalValues::buttonBaseSize()
 
 QString GlobalValues::versionInfo()
 {
-    return QStringLiteral("Lshot " APP_VERSION " (" FLAMESHOT_GIT_HASH ")"
+    return QStringLiteral("CapShot " APP_VERSION " (" FLAMESHOT_GIT_HASH ")"
                           "\nCompiled with Qt " QT_VERSION_STR);
 }
 
 QString GlobalValues::iconPath()
 {
 #if USE_MONOCHROME_ICON
-    return QString(":img/app/lshot.monochrome.svg");
+    return QString(":img/app/CapShot.monochrome.svg");
 #else
-    return { ":img/app/lshot.svg" };
+    return { ":img/app/CapShot.svg" };
 #endif
 }
 
 QString GlobalValues::iconPathPNG()
 {
 #if USE_MONOCHROME_ICON
-    return QString(":img/app/lshot.monochrome.png");
+    return QString(":img/app/CapShot.monochrome.png");
 #else
-    return { ":img/app/lshot.png" };
+    return { ":img/app/CapShot.png" };
 #endif
 }
 
@@ -44,14 +44,14 @@ QString GlobalValues::trayIconPath()
 #if defined(Q_OS_MACOS)
     auto currentMacOsVersion = QOperatingSystemVersion::current();
     if (currentMacOsVersion >= QOperatingSystemVersion::MacOSBigSur) {
-        return { ":img/app/lshot.mask.png" };
+        return { ":img/app/CapShot.mask.png" };
     } else {
-        return { ":img/app/lshot.monochrome.png" };
+        return { ":img/app/CapShot.monochrome.png" };
     }
 #else
-    return { ":img/app/lshot.monochrome.png" };
+    return { ":img/app/CapShot.monochrome.png" };
 #endif
 #else
-    return { ":img/app/lshot.png" };
+    return { ":img/app/CapShot.png" };
 #endif
 }

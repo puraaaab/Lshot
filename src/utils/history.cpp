@@ -11,11 +11,11 @@ History::History()
     // Get cache history path
     ConfigHandler config;
 #ifdef Q_OS_WIN
-    m_historyPath = QDir::homePath() + "/AppData/Roaming/lshot/history/";
+    m_historyPath = QDir::homePath() + "/AppData/Roaming/CapShot/history/";
 #else
     QString cachepath = QProcessEnvironment::systemEnvironment().value(
       "XDG_CACHE_HOME", QDir::homePath() + "/.cache");
-    m_historyPath = cachepath + "/lshot/history/";
+    m_historyPath = cachepath + "/CapShot/history/";
 #endif
 
     // Check if directory for history exists and create if doesn't

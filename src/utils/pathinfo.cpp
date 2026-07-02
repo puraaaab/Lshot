@@ -24,9 +24,9 @@ QStringList PathInfo::translationsPaths()
     QString trPath = QDir::toNativeSeparators(binaryPath + "/translations");
 #if defined(Q_OS_UNIX)
     return QStringList()
-           << QStringLiteral(APP_PREFIX) + "/share/lshot/translations"
-           << trPath << QStringLiteral("/usr/share/lshot/translations")
-           << QStringLiteral("/usr/local/share/lshot/translations");
+           << QStringLiteral(APP_PREFIX) + "/share/CapShot/translations"
+           << trPath << QStringLiteral("/usr/share/CapShot/translations")
+           << QStringLiteral("/usr/local/share/CapShot/translations");
 #endif
     return QStringList() << trPath;
 }

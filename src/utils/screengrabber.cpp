@@ -248,7 +248,7 @@ QPixmap ScreenGrabber::grabEntireDesktop(bool& ok, int preSelectedMonitor)
     if (!m_info.waylandDetected() && ConfigHandler().useX11LegacyScreenshot()) {
         qWarning() << "Using deprecated legacy X11 screenshot method. "
                       "Consider installing xdg-desktop-portal for your "
-                      "desktop. Future versions of Lshot may remove the "
+                      "desktop. Future versions of CapShot may remove the "
                       "option to use the legacy method.";
         screenshot = x11LegacyScreenshot();
         ok = !screenshot.isNull();

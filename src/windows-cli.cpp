@@ -13,9 +13,9 @@ std::wstring joinArgs(int argc, wchar_t* argv[])
     return result;
 }
 
-void CallLshot(const std::wstring args, bool wait)
+void CallCapShot(const std::wstring args, bool wait)
 {
-    // generate full path for lshot executable
+    // generate full path for CapShot executable
     wchar_t path[MAX_PATH];
     int pathLength = GetModuleFileNameW(NULL, path, MAX_PATH);
     std::wstring pathstring(path);
@@ -32,7 +32,7 @@ void CallLshot(const std::wstring args, bool wait)
     wchar_t* cmd = (wchar_t*)malloc(sizeof(wchar_t) * cmdSize);
     swprintf(cmd,
              cmdSize,
-             L"\"%s\\lshot.exe\" %s",
+             L"\"%s\\CapShot.exe\" %s",
              directory.c_str(),
              args.c_str());
     // call subprocess
@@ -53,16 +53,16 @@ void CallLshot(const std::wstring args, bool wait)
     return;
 }
 
-// Console 'wrapper' for lshot on windows
+// Console 'wrapper' for CapShot on windows
 int wmain(int argc, wchar_t* argv[])
 {
     // if no args, do not wait for stdout
     if (argc == 1) {
-        std::cout << "Starting lshot in daemon mode" << std::endl;
-        CallLshot(L"", false);
+        std::cout << "Starting CapShot in daemon mode" << std::endl;
+        CallCapShot(L"", false);
     } else {
         std::wstring argString = joinArgs(argc, argv);
-        CallLshot(argString, true);
+        CallCapShot(argString, true);
     }
     std::cout.flush();
     return 0;

@@ -1,4 +1,4 @@
 # Required to generate MOC
-target_sources(lshot PRIVATE sidepanelwidget.h utilitypanel.h colorgrabwidget.h)
+target_sources(CapShot PRIVATE sidepanelwidget.h utilitypanel.h colorgrabwidget.h)
 
-target_sources(lshot PRIVATE sidepanelwidget.cpp utilitypanel.cpp colorgrabwidget.cpp)
+target_sources(CapShot PRIVATE sidepanelwidget.cpp utilitypanel.cpp colorgrabwidget.cpp)

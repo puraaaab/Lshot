@@ -1,22 +1,22 @@
-#compdef lshot
+#compdef CapShot
 # ------------------------------------------------------------------------------
 # Description
 # -----------
 #
-#  Completion script for the lshot command line interface
-#  (https://github.com/lshot-org/lshot).
+#  Completion script for the CapShot command line interface
+#  (https://github.com/CapShot-org/CapShot).
 #
 # ------------------------------------------------------------------------------
 # How to use
 # -------
 #
-# Copy this file to /usr/share/zsh/site-functions/_lshot
+# Copy this file to /usr/share/zsh/site-functions/_CapShot
 #
 
 
 # gui
 
-_lshot_gui_opts=(
+_CapShot_gui_opts=(
     {-p,--path}'[Existing directory or new file to save to]':dir:_files
     {-c,--clipboard}'[Save the capture to the clipboard]'
     {-d,--delay}'[Delay time in milliseconds]'
@@ -29,15 +29,15 @@ _lshot_gui_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_lshot_gui() {
+_CapShot_gui() {
     _arguments -s : \
-    "$_lshot_gui_opts[@]"
+    "$_CapShot_gui_opts[@]"
 }
 
 
 # screen
 
-_lshot_screen_opts=(
+_CapShot_screen_opts=(
     {-n,--number}'[Define the screen to capture (starting from 0). Default: screen containing the cursor]'
     {-e,--edit}'[Interactively select and edit the screenshot region]'
     {-p,--path}'[Existing directory or new file to save to]':dir:_files
@@ -49,15 +49,15 @@ _lshot_screen_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_lshot_screen() {
+_CapShot_screen() {
     _arguments -s : \
-    "$_lshot_screen_opts[@]"
+    "$_CapShot_screen_opts[@]"
 }
 
 
 # full
 
-_lshot_full_opts=(
+_CapShot_full_opts=(
     {-p,--path}'[Existing directory or new file to save to]':dir:_files
     {-c,--clipboard}'[Save the capture to the clipboard]'
     {-d,--delay}'[Delay time in milliseconds]'
@@ -65,15 +65,15 @@ _lshot_full_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_lshot_full() {
+_CapShot_full() {
     _arguments -s : \
-    "$_lshot_full_opts[@]"
+    "$_CapShot_full_opts[@]"
 }
 
 
 # config
 
-_lshot_config_opts=(
+_CapShot_config_opts=(
     {-a,--autostart}'[Enable or disable run at startup (true/false)]'
     {-f,--filename}'[Set the filename pattern]'
     {-n,--notification}'[Enable or disable the notification (true/false)]'
@@ -85,14 +85,14 @@ _lshot_config_opts=(
     {-h,--help}'[Show the available arguments]'
 )
 
-_lshot_config() {
+_CapShot_config() {
     _arguments -s : \
-    "$_lshot_config_opts[@]"
+    "$_CapShot_config_opts[@]"
 }
 
 
 # Main handle
-_lshot() {
+_CapShot() {
     local curcontext="$curcontext" ret=1
     local -a state line commands
 
@@ -101,7 +101,7 @@ _lshot() {
         "screen:Capture a single screen (one monitor)"
         "full:Capture the entire desktop (all monitors)"
         "launcher:Open the capture launcher"
-        "config:Configure Lshot"
+        "config:Configure CapShot"
     )
 
     _arguments -C -s -S -n \
@@ -119,16 +119,16 @@ _lshot() {
         cmd=$words[1]
         case "$cmd" in
             (gui)
-                _lshot_gui && ret=0
+                _CapShot_gui && ret=0
             ;;
             (screen)
-                _lshot_screen && ret=0
+                _CapShot_screen && ret=0
             ;;
             (full)
-                _lshot_full && ret=0
+                _CapShot_full && ret=0
             ;;
             (config)
-                _lshot_config && ret=0
+                _CapShot_config && ret=0
             ;;
             (*)
                 _default && ret=0
@@ -142,7 +142,7 @@ _lshot() {
     return ret
 }
 
-_lshot
+_CapShot
 
 #
 # Editor modelines  -  https://www.wireshark.org/tools/modelines.html
